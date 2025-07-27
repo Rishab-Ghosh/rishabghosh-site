@@ -102,12 +102,12 @@ export default function Home() {
               </p>
             </motion.div>
             
-            <motion.div 
+            <motion.div
               className="grid grid-cols-1 md:grid-cols-3 gap-8"
               variants={staggerContainer}
             >
               {features.map((feature, index) => (
-                <motion.div 
+                <motion.div
                   key={index}
                   className="text-center p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm"
                   variants={fadeInUp}
