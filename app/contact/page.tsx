@@ -21,13 +21,13 @@ export default function Contact() {
                 className="text-4xl font-bold text-gray-900 dark:text-white mb-6"
                 variants={fadeInUp}
               >
-                Let's Connect
+                Let&apos;s Connect
               </motion.h1>
               <motion.p 
                 className="text-xl text-gray-600 dark:text-gray-300 mb-12 leading-relaxed"
                 variants={fadeInUp}
               >
-                I'm always down to talk startups, quant, or poker. Reach out!
+                I&apos;m always down to talk startups, quant, or poker. Reach out!
               </motion.p>
             </motion.div>
 

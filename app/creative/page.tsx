@@ -27,7 +27,7 @@ export default function Creative() {
                 className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
                 variants={fadeInUp}
               >
-                Videos, music, and creative projects I'm working on
+                Videos, music, and creative projects I&apos;m working on
               </motion.p>
             </motion.div>
 
@@ -171,7 +171,7 @@ export default function Creative() {
                   Want to collaborate?
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-                  I'm always open to creative collaborations, podcast appearances, or just chatting about 
+                  I&apos;m always open to creative collaborations, podcast appearances, or just chatting about 
                   quant finance, startups, or poker strategy.
                 </p>
                 <motion.a

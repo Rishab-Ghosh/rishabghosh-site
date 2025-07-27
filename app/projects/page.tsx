@@ -27,7 +27,7 @@ export default function Projects() {
               className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
               variants={fadeInUp}
             >
-              Here are some of the projects I've built, combining my passion for quantitative finance, 
+              Here are some of the projects I&apos;ve built, combining my passion for quantitative finance, 
               technology, and creating useful tools for others.
             </motion.p>
           </motion.div>
@@ -68,7 +68,7 @@ export default function Projects() {
               className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8"
               variants={fadeInUp}
             >
-              I'm currently working on several exciting projects. Stay tuned for updates!
+              I&apos;m currently working on several exciting projects. Stay tuned for updates!
             </motion.p>
             
             <motion.div 
