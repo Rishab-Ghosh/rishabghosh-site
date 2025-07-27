@@ -1,134 +1,101 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import PageTransition, { staggerContainer, fadeInUp, fadeIn } from '@/components/PageTransition';
-import { bio, features } from '@/data/bio';
-import { socialLinks } from '@/data/socials';
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <PageTransition>
-      <div className="min-h-screen">
-        {/* Hero Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="container mx-auto text-center"
-            variants={staggerContainer}
-            initial="hidden"
-            animate="show"
-          >
-            {/* Main Heading */}
-            <motion.h1 
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6"
-              variants={fadeInUp}
+    <div className="min-h-screen bg-background">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Animated background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-surface to-accent">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(230,57,70,0.1),transparent_50%)]"></div>
+        </div>
+        
+        {/* Floating elements */}
+        <div className="absolute top-20 left-20 w-2 h-2 bg-primary rounded-full animate-glow"></div>
+        <div className="absolute top-40 right-32 w-1 h-1 bg-primary rounded-full animate-float"></div>
+        <div className="absolute bottom-32 left-1/4 w-3 h-3 bg-primary/50 rounded-full animate-float" style={{animationDelay: '2s'}}></div>
+        
+        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+          {/* Main Headline */}
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-space font-bold mb-6">
+            <span className="text-highlight">ALL IN</span>
+            <br />
+            <span className="text-primary neon-glow">ON THE</span>
+            <br />
+            <span className="text-highlight">FUTURE</span>
+          </h1>
+          
+          {/* Subtitle */}
+          <p className="text-xl sm:text-2xl lg:text-3xl font-inter text-highlight/80 mb-8 max-w-3xl mx-auto">
+            Quant • VC • Builder • Blackjack Enjoyer
+          </p>
+          
+          {/* Bio */}
+          <p className="text-lg sm:text-xl font-inter text-highlight/70 mb-12 max-w-2xl mx-auto leading-relaxed">
+            McCombs student by day, poker strategist by night. Building the future of quantitative finance 
+            and venture capital, one data-driven decision at a time.
+          </p>
+          
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+            <Link
+              href="/projects"
+              className="group relative px-8 py-4 bg-primary text-highlight font-space font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:scale-105"
             >
-              {bio.title.split('Rishab Ghosh')[0]} <span className="text-blue-600 dark:text-blue-400">{bio.name}</span>
-            </motion.h1>
+              <span className="relative z-10">VIEW PROJECTS</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </Link>
             
-            {/* Subheading */}
-            <motion.h2 
-              className="text-xl sm:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 mb-8 font-medium"
-              variants={fadeInUp}
+            <Link
+              href="/reviews"
+              className="group px-8 py-4 border-2 border-primary/50 text-primary font-space font-semibold rounded-lg hover:border-primary hover:bg-primary/10 transition-all duration-300"
             >
-              {bio.subtitle}
-            </motion.h2>
-            
-            {/* Bio Paragraph */}
-            <motion.p 
-              className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
-              variants={fadeInUp}
+              MOVIE REVIEWS
+            </Link>
+          </div>
+          
+          {/* Quick Links */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
+            <Link
+              href="/about"
+              className="group p-6 bg-surface/50 rounded-lg border border-primary/20 hover:border-primary/50 transition-all duration-300"
             >
-              {bio.description}
-            </motion.p>
-            
-            {/* CTA Button */}
-            <motion.div 
-              className="mb-12"
-              variants={fadeInUp}
-            >
-              <a
-                href={bio.resumeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-semibold rounded-lg text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                View Resume
-              </a>
-            </motion.div>
-            
-            {/* Social Icons */}
-            <motion.div 
-              className="flex justify-center space-x-6"
-              variants={fadeInUp}
-            >
-              {socialLinks.slice(0, 2).map((social) => (
-                <a
-                  key={social.name}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-200 transform hover:scale-110"
-                  aria-label={social.ariaLabel}
-                >
-                  <svg className="w-6 h-6 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                    <path d={social.icon} />
-                  </svg>
-                </a>
-              ))}
-            </motion.div>
-          </motion.div>
-        </section>
-
-        {/* Features Section */}
-        <section className="py-16 bg-gray-50 dark:bg-gray-800">
-          <motion.div 
-            className="container mx-auto px-4 sm:px-6 lg:px-8"
-            variants={staggerContainer}
-            initial="hidden"
-            animate="show"
-          >
-            <motion.div 
-              className="text-center mb-12"
-              variants={fadeInUp}
-            >
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                What I Do
-              </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                I specialize in quantitative analysis, venture capital, and building data-driven solutions
+              <h3 className="text-primary font-space font-semibold mb-2 group-hover:neon-glow transition-all duration-300">
+                ABOUT
+              </h3>
+              <p className="text-highlight/60 text-sm font-inter">
+                The story behind the quant
               </p>
-            </motion.div>
+            </Link>
             
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-3 gap-8"
-              variants={staggerContainer}
+            <Link
+              href="/creative"
+              className="group p-6 bg-surface/50 rounded-lg border border-primary/20 hover:border-primary/50 transition-all duration-300"
             >
-              {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  className="text-center p-6 bg-white dark:bg-gray-700 rounded-lg shadow-sm"
-                  variants={fadeInUp}
-                >
-                  <div className={`w-12 h-12 bg-${feature.color}-100 dark:bg-${feature.color}-900 rounded-lg flex items-center justify-center mx-auto mb-4`}>
-                    <svg className={`w-6 h-6 text-${feature.color}-600 dark:text-${feature.color}-400`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={feature.icon} />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    {feature.description}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </section>
-      </div>
-    </PageTransition>
+              <h3 className="text-primary font-space font-semibold mb-2 group-hover:neon-glow transition-all duration-300">
+                CREATIVE
+              </h3>
+              <p className="text-highlight/60 text-sm font-inter">
+                Videos, music, and vibes
+              </p>
+            </Link>
+            
+            <Link
+              href="/contact"
+              className="group p-6 bg-surface/50 rounded-lg border border-primary/20 hover:border-primary/50 transition-all duration-300"
+            >
+              <h3 className="text-primary font-space font-semibold mb-2 group-hover:neon-glow transition-all duration-300">
+                CONNECT
+              </h3>
+              <p className="text-highlight/60 text-sm font-inter">
+                Let&apos;s build something
+              </p>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 } 

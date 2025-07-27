@@ -1,192 +1,166 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import PageTransition, { staggerContainer, fadeInUp, fadeIn } from '@/components/PageTransition';
-import { creativeLogs, videos, spotifyPlaylist } from '@/data/socials';
-
 export default function Creative() {
+  const videos = [
+    {
+      title: "Building a Volatility Dashboard",
+      description: "How I built an interactive dashboard for analyzing volatility surfaces using Python and Streamlit.",
+      embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    },
+    {
+      title: "Poker Strategy Deep Dive",
+      description: "Breaking down advanced poker strategies and the math behind optimal play.",
+      embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    }
+  ];
+
+  const nowLogs = [
+    {
+      id: "1",
+      title: "Working on Portfolio Optimizer",
+      date: "2024-01-15",
+      note: "Building a risk-adjusted portfolio optimization tool. Because apparently diversification is important."
+    },
+    {
+      id: "2", 
+      title: "Watched Oppenheimer",
+      date: "2024-01-12",
+      note: "Finally got around to watching it. Cillian Murphy's performance is absolutely mesmerizing."
+    },
+    {
+      id: "3",
+      title: "Poker Session",
+      date: "2024-01-10", 
+      note: "Played some live poker downtown. Won a decent pot with pocket aces. The math works sometimes."
+    },
+    {
+      id: "4",
+      title: "Started New Project",
+      date: "2024-01-08",
+      note: "Beginning work on a market sentiment analyzer. Twitter is basically a crystal ball for stock prices."
+    }
+  ];
+
   return (
-    <PageTransition>
-      <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto">
-          <div className="max-w-4xl mx-auto">
-            {/* Page Header */}
-            <motion.div 
-              className="text-center mb-16"
-              variants={staggerContainer}
-              initial="hidden"
-              animate="show"
-            >
-              <motion.h1 
-                className="text-4xl font-bold text-gray-900 dark:text-white mb-4"
-                variants={fadeInUp}
-              >
-                Creative Corner
-              </motion.h1>
-              <motion.p 
-                className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
-                variants={fadeInUp}
-              >
-                Videos, music, and creative projects I&apos;m working on
-              </motion.p>
-            </motion.div>
+    <div className="min-h-screen bg-background py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-5xl sm:text-6xl font-space font-bold text-highlight mb-6">
+            CREATIVE CORNER
+          </h1>
+          <p className="text-xl font-inter text-highlight/70 max-w-3xl mx-auto leading-relaxed">
+            Videos, music, and creative projects I&apos;m working on. Because apparently I have hobbies 
+            beyond staring at spreadsheets.
+          </p>
+        </div>
 
-            {/* YouTube Section */}
-            <motion.section 
-              className="mb-16"
-              variants={staggerContainer}
-              initial="hidden"
-              animate="show"
-            >
-              <motion.h2 
-                className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center"
-                variants={fadeInUp}
-              >
-                🎥 Recent Videos
-              </motion.h2>
-              <motion.div 
-                className="grid grid-cols-1 lg:grid-cols-2 gap-8"
-                variants={staggerContainer}
-              >
-                {videos.map((video, index) => (
-                  <motion.div 
-                    key={index}
-                    className="space-y-4"
-                    variants={fadeInUp}
-                  >
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                      {video.title}
-                    </h3>
-                    <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                      <iframe
-                        className="absolute top-0 left-0 w-full h-full rounded-lg"
-                        src={video.embedUrl}
-                        title={video.title}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      ></iframe>
-                    </div>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      {video.description}
-                    </p>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </motion.section>
-
-            {/* Spotify Section */}
-            <motion.section 
-              className="mb-16"
-              variants={staggerContainer}
-              initial="hidden"
-              animate="show"
-            >
-              <motion.h2 
-                className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center"
-                variants={fadeInUp}
-              >
-                🎧 Currently Listening
-              </motion.h2>
-              <motion.div 
-                className="bg-white dark:bg-gray-700 rounded-lg shadow-sm p-6"
-                variants={fadeInUp}
-              >
-                <div className="text-center mb-6">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                    {spotifyPlaylist.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    {spotifyPlaylist.description}
-                  </p>
-                </div>
-                <div className="flex justify-center">
+        {/* YouTube Section */}
+        <div className="mb-20">
+          <h2 className="text-3xl font-space font-bold text-primary neon-glow text-center mb-12">
+            🎥 RECENT VIDEOS
+          </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {videos.map((video, index) => (
+              <div key={index} className="space-y-4">
+                <h3 className="text-xl font-space font-semibold text-primary">
+                  {video.title}
+                </h3>
+                <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
                   <iframe
-                    className="rounded-lg"
-                    style={{ width: '100%', maxWidth: '400px', height: '380px' }}
-                    src={spotifyPlaylist.embedUrl}
-                    title="Spotify Playlist"
+                    className="absolute top-0 left-0 w-full h-full rounded-lg border border-primary/20"
+                    src={video.embedUrl}
+                    title={video.title}
                     frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture; loading=lazy"
                   ></iframe>
                 </div>
-              </motion.div>
-            </motion.section>
-
-            {/* Creative Logs Section */}
-            <motion.section
-              variants={staggerContainer}
-              initial="hidden"
-              animate="show"
-            >
-              <motion.h2 
-                className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center"
-                variants={fadeInUp}
-              >
-                📝 Creative Logs
-              </motion.h2>
-              <motion.div 
-                className="grid grid-cols-1 md:grid-cols-2 gap-6"
-                variants={staggerContainer}
-              >
-                {creativeLogs.map((log) => (
-                  <motion.div 
-                    key={log.id} 
-                    className="bg-white dark:bg-gray-700 rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow duration-200"
-                    variants={fadeInUp}
-                    whileHover={{ y: -2 }}
-                  >
-                    <div className="flex items-start justify-between mb-3">
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                        {log.title}
-                      </h3>
-                      <span className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-600 px-2 py-1 rounded">
-                        {new Date(log.date).toLocaleDateString('en-US', { 
-                          month: 'short', 
-                          day: 'numeric' 
-                        })}
-                      </span>
-                    </div>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                      {log.note}
-                    </p>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </motion.section>
-
-            {/* Call to Action */}
-            <motion.div 
-              className="mt-16 text-center"
-              variants={staggerContainer}
-              initial="hidden"
-              animate="show"
-            >
-              <motion.div 
-                className="bg-gray-50 dark:bg-gray-800 rounded-lg p-8"
-                variants={fadeInUp}
-              >
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                  Want to collaborate?
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-                  I&apos;m always open to creative collaborations, podcast appearances, or just chatting about 
-                  quant finance, startups, or poker strategy.
+                <p className="text-highlight/80 font-inter text-sm">
+                  {video.description}
                 </p>
-                <motion.a
-                  href="/contact"
-                  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors duration-200"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Get In Touch
-                </motion.a>
-              </motion.div>
-            </motion.div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Spotify Section */}
+        <div className="mb-20">
+          <h2 className="text-3xl font-space font-bold text-primary neon-glow text-center mb-12">
+            🎧 CURRENTLY LISTENING
+          </h2>
+          <div className="bg-surface/50 rounded-lg p-6 border border-primary/20 max-w-2xl mx-auto">
+            <div className="text-center mb-6">
+              <h3 className="text-xl font-space font-semibold text-primary mb-2">
+                Late Night Coding Vibes
+              </h3>
+              <p className="text-highlight/70 font-inter">
+                A mix of lo-fi, jazz, and electronic music for those 3 AM coding sessions
+              </p>
+            </div>
+            <div className="flex justify-center">
+              <iframe
+                className="rounded-lg border border-primary/20"
+                style={{ width: '100%', maxWidth: '400px', height: '380px' }}
+                src="https://open.spotify.com/embed/playlist/37i9dQZF1DX5Vy6DFOcx00"
+                title="Spotify Playlist"
+                frameBorder="0"
+                allowFullScreen
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture; loading=lazy"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+
+        {/* Now Logs */}
+        <div>
+          <h2 className="text-3xl font-space font-bold text-primary neon-glow text-center mb-12">
+            📝 NOW LOGS
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {nowLogs.map((log) => (
+              <div 
+                key={log.id} 
+                className="bg-surface/50 rounded-lg p-6 border border-primary/20 hover:border-primary/40 transition-all duration-300"
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <h3 className="text-lg font-space font-semibold text-primary">
+                    {log.title}
+                  </h3>
+                  <span className="text-sm font-inter text-highlight/60 bg-accent px-2 py-1 rounded">
+                    {new Date(log.date).toLocaleDateString('en-US', { 
+                      month: 'short', 
+                      day: 'numeric' 
+                    })}
+                  </span>
+                </div>
+                <p className="text-highlight/80 font-inter text-sm leading-relaxed">
+                  {log.note}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Call to Action */}
+        <div className="mt-20 text-center">
+          <div className="bg-surface/30 rounded-lg p-8 border border-primary/20 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-space font-bold text-primary mb-4">
+              WANT TO COLLABORATE?
+            </h3>
+            <p className="text-highlight/80 font-inter mb-6 max-w-2xl mx-auto">
+              I&apos;m always open to creative collaborations, podcast appearances, or just chatting about 
+              quant finance, startups, or poker strategy. Hit me up!
+            </p>
+            <a
+              href="/contact"
+              className="inline-flex items-center px-6 py-3 bg-primary text-highlight font-space font-semibold rounded-lg hover:bg-primary/80 transition-all duration-200"
+            >
+              Get In Touch
+            </a>
           </div>
         </div>
       </div>
-    </PageTransition>
+    </div>
   );
 } 
