@@ -7,12 +7,13 @@
 
 @layer base {
   html {
-    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
   }
-  
+
   body {
-    @apply bg-background text-highlight;
+    @apply bg-gradient-mesh text-text;
     font-family: 'Inter', sans-serif;
+    min-height: 100vh;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -22,14 +23,48 @@
 
 @layer components {
   .card-hover {
-    @apply transition-all duration-300 hover:scale-105 hover:shadow-lg;
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20;
   }
-  
+
   .border-hover {
     @apply border border-border hover:border-primary/60 transition-colors duration-300;
   }
-  
+
   .text-gradient {
-    @apply bg-gradient-to-r from-primary to-gray-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+
+  .glass-effect {
+    @apply bg-surface/80 backdrop-blur-md border border-border/50;
+  }
+
+  .nav-link {
+    @apply relative px-4 py-2 text-text/70 hover:text-primary transition-all duration-300 font-inter text-sm;
+  }
+
+  .nav-link.active {
+    @apply text-primary;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary transition-all duration-300;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    @apply w-full;
+  }
+
+  .page-transition {
+    @apply animate-fade-in;
+  }
+
+  .content-slide-in {
+    @apply animate-slide-in;
+  }
+
+  .content-slide-up {
+    @apply animate-slide-up;
   }
 } 

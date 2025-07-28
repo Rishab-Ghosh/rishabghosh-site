@@ -3,63 +3,60 @@
 export default function About() {
   const timeline = [
     {
-      year: "2018-2021",
-      title: "Math & Science Academy",
-      description: "Where I learned that calculus is just fancy counting and physics is just applied math. Also discovered my love for solving impossible problems.",
-      emoji: "🧮"
-    },
-    {
-      year: "2021-Present",
+      year: "2024",
       title: "McCombs School of Business",
-      description: "Currently studying finance and CS because apparently you need a degree to tell people you know what you're doing. Building quantitative skills and trying not to fail my classes.",
+      description: "Currently pursuing my degree in Business while diving deep into quantitative finance and venture capital. Because apparently I need a piece of paper to prove I know what I'm doing.",
       emoji: "🎓"
     },
     {
-      year: "2024",
+      year: "2023",
       title: "Arbor Ventures Internship",
-      description: "Got to play venture capitalist for a summer. Learned that most startups are just PowerPoint presentations until they're not. Surprisingly fun.",
-      emoji: "💰"
+      description: "Spent the summer analyzing startups and learning that most pitch decks are just fancy PowerPoint presentations. But hey, some of them actually work.",
+      emoji: "💼"
     },
     {
-      year: "2025",
-      title: "Building Cool Stuff",
-      description: "Working on volatility analysis tools and poker training apps. Because why not combine my two favorite things: math and gambling?",
-      emoji: "🎰"
+      year: "2022",
+      title: "First Quant Project",
+      description: "Built my first volatility surface dashboard. Because staring at numbers all day wasn't enough, I needed pretty graphs too.",
+      emoji: "📊"
+    },
+    {
+      year: "2021",
+      title: "Discovered Poker",
+      description: "Found out that probability theory is actually useful in real life. The casino wasn't happy, but my wallet was.",
+      emoji: "🃏"
     }
   ];
 
   const skills = [
     {
       category: "Quantitative Finance",
-      items: ["Financial Modeling", "Risk Analysis", "Options Pricing", "Portfolio Optimization"],
-      color: "primary"
-    },
-    {
-      category: "Venture Capital",
-      items: ["Due Diligence", "Market Analysis", "Investment Thesis", "Startup Evaluation"],
-      color: "primary"
+      items: ["Options Pricing", "Volatility Modeling", "Portfolio Optimization", "Risk Management", "Python", "R"]
     },
     {
       category: "Technology",
-      items: ["Python & JavaScript", "React & Next.js", "Data Analysis", "Machine Learning"],
-      color: "primary"
+      items: ["Next.js", "React", "TypeScript", "Python", "SQL", "Git", "AWS", "Docker"]
+    },
+    {
+      category: "Other Skills",
+      items: ["Poker Strategy", "Card Counting", "Startup Analysis", "Data Visualization", "Public Speaking"]
     }
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-mesh">
       {/* Hero Section with Photo */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 mr-20">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Photo */}
-            <div className="order-2 lg:order-1">
+            <div className="order-2 lg:order-1 content-slide-in">
               <div className="relative">
                 <div className="w-full max-w-md mx-auto">
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-surface border border-border">
-                    <img 
-                      src="/images/rishab-profile.jpg" 
-                      alt="Rishab Ghosh" 
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-surface/50 backdrop-blur-md border border-border/50">
+                    <img
+                      src="/images/rishab-profile.jpg"
+                      alt="Rishab Ghosh"
                       className="w-full h-auto object-cover min-h-[400px]"
                       onError={(e) => {
                         const target = e.currentTarget;
@@ -71,8 +68,8 @@ export default function About() {
                       }}
                     />
                     {/* Fallback placeholder */}
-                    <div 
-                      className="hidden w-full h-[400px] bg-gradient-to-br from-primary/10 to-accent/20 flex items-center justify-center"
+                    <div
+                      className="hidden w-full h-[400px] bg-gradient-to-br from-primary/10 to-secondary/20 flex items-center justify-center"
                       style={{ display: 'none' }}
                     >
                       <div className="text-center">
@@ -82,41 +79,41 @@ export default function About() {
                           </svg>
                         </div>
                         <p className="text-primary font-inter text-sm">Add your photo here</p>
-                        <p className="text-highlight/60 font-inter text-xs mt-1">rishab-profile.jpg</p>
+                        <p className="text-text/60 font-inter text-xs mt-1">rishab-profile.jpg</p>
                       </div>
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
                   </div>
                   {/* Decorative elements */}
                   <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary/20 rounded-full animate-float"></div>
-                  <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-primary/30 rounded-full animate-float" style={{animationDelay: '2s'}}></div>
+                  <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-secondary/30 rounded-full animate-float" style={{animationDelay: '2s'}}></div>
                 </div>
               </div>
             </div>
 
             {/* Content */}
-            <div className="order-1 lg:order-2">
+            <div className="order-1 lg:order-2 content-slide-in" style={{animationDelay: '0.2s'}}>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-space font-bold text-highlight mb-6">
                 ABOUT ME
               </h1>
-              <p className="text-xl font-inter text-highlight/60 mb-8 leading-relaxed">
-                McCombs student by day, poker strategist by night. I&apos;m passionate about quantitative finance, 
+              <p className="text-xl font-inter text-text/60 mb-8 leading-relaxed">
+                McCombs student by day, poker strategist by night. I&apos;m passionate about quantitative finance,
                 venture capital, and building things that actually work. Also, I&apos;m pretty good at blackjack.
               </p>
-              
+
               {/* Quick Stats */}
               <div className="grid grid-cols-3 gap-6 mb-8">
                 <div className="text-center">
-                  <div className="text-2xl font-space font-bold text-primary">3+</div>
-                  <div className="text-sm font-inter text-highlight/60">Years Experience</div>
+                  <div className="text-2xl font-space font-bold text-gradient">3+</div>
+                  <div className="text-sm font-inter text-text/60">Years Experience</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-space font-bold text-primary">10+</div>
-                  <div className="text-sm font-inter text-highlight/60">Projects Built</div>
+                  <div className="text-2xl font-space font-bold text-gradient">10+</div>
+                  <div className="text-sm font-inter text-text/60">Projects Built</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-space font-bold text-primary">∞</div>
-                  <div className="text-sm font-inter text-highlight/60">Poker Hands</div>
+                  <div className="text-2xl font-space font-bold text-gradient">∞</div>
+                  <div className="text-sm font-inter text-text/60">Poker Hands</div>
                 </div>
               </div>
             </div>
@@ -125,37 +122,37 @@ export default function About() {
       </section>
 
       {/* Timeline Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-surface/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 mr-20 bg-surface/20">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-space font-bold text-primary text-center mb-12">
+          <h2 className="text-3xl font-space font-bold text-gradient text-center mb-12 content-slide-up">
             THE TIMELINE
           </h2>
-          
+
           <div className="space-y-12">
             {timeline.map((item, index) => (
-              <div key={index} className="relative">
+              <div key={index} className="relative content-slide-up" style={{animationDelay: `${0.1 * index}s`}}>
                 {/* Timeline line */}
                 {index < timeline.length - 1 && (
-                  <div className="absolute left-8 top-16 w-0.5 h-12 bg-primary/30"></div>
+                  <div className="absolute left-8 top-16 w-0.5 h-12 bg-gradient-to-b from-primary to-secondary"></div>
                 )}
-                
+
                 <div className="flex items-start space-x-6">
                   {/* Year badge */}
-                  <div className="flex-shrink-0 w-16 h-16 bg-primary/10 border border-primary/30 rounded-full flex items-center justify-center">
+                  <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-primary/20 to-secondary/20 border border-primary/30 rounded-full flex items-center justify-center">
                     <span className="text-2xl">{item.emoji}</span>
                   </div>
-                  
+
                   {/* Content */}
-                  <div className="flex-1 bg-background rounded-lg p-6 border border-border hover:border-primary/40 transition-all duration-300 shadow-sm">
+                  <div className="flex-1 bg-surface/50 backdrop-blur-md rounded-lg p-6 border border-border/50 hover:border-primary/40 transition-all duration-300 shadow-sm">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-xl font-space font-semibold text-primary">
                         {item.title}
                       </h3>
-                      <span className="text-sm font-inter text-highlight/60 bg-accent px-3 py-1 rounded-full">
+                      <span className="text-sm font-inter text-text/60 bg-accent/20 px-3 py-1 rounded-full">
                         {item.year}
                       </span>
                     </div>
-                    <p className="text-highlight/70 font-inter leading-relaxed">
+                    <p className="text-text/70 font-inter leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -167,23 +164,23 @@ export default function About() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 mr-20">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-space font-bold text-primary text-center mb-12">
+          <h2 className="text-3xl font-space font-bold text-gradient text-center mb-12 content-slide-up">
             SKILLS & EXPERTISE
           </h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {skills.map((skill, index) => (
-              <div key={index} className="bg-surface rounded-lg p-6 border border-border hover:border-primary/40 transition-all duration-300 shadow-sm">
+              <div key={index} className="bg-surface/50 backdrop-blur-md rounded-lg p-6 border border-border/50 hover:border-primary/40 transition-all duration-300 shadow-sm content-slide-up" style={{animationDelay: `${0.1 * index}s`}}>
                 <h3 className="text-xl font-space font-semibold text-primary mb-4">
                   {skill.category}
                 </h3>
                 <div className="space-y-2">
                   {skill.items.map((item, itemIndex) => (
                     <div key={itemIndex} className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span className="text-highlight/70 font-inter text-sm">
+                      <div className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                      <span className="text-text/70 font-inter text-sm">
                         {item}
                       </span>
                     </div>
@@ -196,14 +193,14 @@ export default function About() {
       </section>
 
       {/* Fun fact */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-surface/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 mr-20 bg-surface/20">
         <div className="max-w-6xl mx-auto text-center">
-          <div className="bg-background rounded-lg p-8 border border-border max-w-2xl mx-auto shadow-sm">
-            <h3 className="text-2xl font-space font-bold text-primary mb-4">
+          <div className="bg-surface/50 backdrop-blur-md rounded-lg p-8 border border-border/50 max-w-2xl mx-auto shadow-sm content-slide-up">
+            <h3 className="text-2xl font-space font-bold text-gradient mb-4">
               FUN FACT
             </h3>
-            <p className="text-highlight/70 font-inter">
-              I once calculated the optimal betting strategy for a casino game using Python. 
+            <p className="text-text/70 font-inter">
+              I once calculated the optimal betting strategy for a casino game using Python.
               The casino wasn&apos;t happy, but my wallet was. 🎰
             </p>
           </div>
