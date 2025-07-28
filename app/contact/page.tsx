@@ -30,7 +30,7 @@ export default function Contact() {
           <h1 className="text-5xl sm:text-6xl font-space font-bold text-highlight mb-6">
             LET&apos;S CONNECT
           </h1>
-          <p className="text-xl font-inter text-highlight/70 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl font-inter text-highlight/60 max-w-2xl mx-auto leading-relaxed">
             I&apos;m always down to talk startups, quant, or poker. Or really anything interesting. 
             Hit me up if you want to build something cool together.
           </p>
@@ -39,13 +39,13 @@ export default function Contact() {
         {/* Contact Info */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           {/* Email Section */}
-          <div className="bg-surface/50 rounded-lg p-8 border border-primary/20">
+          <div className="bg-surface rounded-lg p-8 border border-border">
             <h2 className="text-2xl font-space font-bold text-primary mb-6">
               GET IN TOUCH
             </h2>
             <div className="space-y-4">
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                   <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
@@ -62,7 +62,7 @@ export default function Contact() {
               </div>
               
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                   <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -77,7 +77,7 @@ export default function Contact() {
           </div>
 
           {/* Social Links */}
-          <div className="bg-surface/50 rounded-lg p-8 border border-primary/20">
+          <div className="bg-surface rounded-lg p-8 border border-border">
             <h2 className="text-2xl font-space font-bold text-primary mb-6">
               SOCIAL LINKS
             </h2>
@@ -88,10 +88,10 @@ export default function Contact() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-4 p-4 bg-accent rounded-lg hover:bg-primary/20 transition-all duration-200 group"
+                  className="flex items-center space-x-4 p-4 bg-accent rounded-lg hover:bg-primary/10 transition-all duration-200 group"
                   aria-label={social.ariaLabel}
                 >
-                  <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center group-hover:bg-primary/30 transition-colors duration-200">
+                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-200">
                     <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
                       <path d={social.icon} />
                     </svg>
@@ -106,7 +106,7 @@ export default function Contact() {
         </div>
 
         {/* Contact Form */}
-        <div className="bg-surface/50 rounded-lg p-8 border border-primary/20">
+        <div className="bg-surface rounded-lg p-8 border border-border">
           <h2 className="text-2xl font-space font-bold text-primary mb-6">
             SEND A MESSAGE
           </h2>
@@ -114,41 +114,41 @@ export default function Contact() {
           <form className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-inter font-medium text-highlight/80 mb-2">
+                <label htmlFor="name" className="block text-sm font-inter font-medium text-highlight/70 mb-2">
                   Name
                 </label>
                 <input
                   type="text"
                   id="name"
                   name="name"
-                  className="w-full px-4 py-3 bg-accent border border-primary/20 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-highlight placeholder-highlight/40 font-inter"
+                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-highlight placeholder-highlight/40 font-inter"
                   placeholder="Your name"
                 />
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-sm font-inter font-medium text-highlight/80 mb-2">
+                <label htmlFor="email" className="block text-sm font-inter font-medium text-highlight/70 mb-2">
                   Email
                 </label>
                 <input
                   type="email"
                   id="email"
                   name="email"
-                  className="w-full px-4 py-3 bg-accent border border-primary/20 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-highlight placeholder-highlight/40 font-inter"
+                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-highlight placeholder-highlight/40 font-inter"
                   placeholder="your.email@example.com"
                 />
               </div>
             </div>
             
             <div>
-              <label htmlFor="message" className="block text-sm font-inter font-medium text-highlight/80 mb-2">
+              <label htmlFor="message" className="block text-sm font-inter font-medium text-highlight/70 mb-2">
                 Message
               </label>
               <textarea
                 id="message"
                 name="message"
                 rows={6}
-                className="w-full px-4 py-3 bg-accent border border-primary/20 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-highlight placeholder-highlight/40 font-inter resize-none"
+                className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-highlight placeholder-highlight/40 font-inter resize-none"
                 placeholder="What's on your mind?"
               ></textarea>
             </div>
@@ -156,7 +156,7 @@ export default function Contact() {
             <div className="text-center">
               <button
                 type="submit"
-                className="px-8 py-3 bg-primary text-highlight font-space font-semibold rounded-lg hover:bg-primary/80 transition-all duration-200"
+                className="px-8 py-3 bg-primary text-background font-space font-semibold rounded-lg hover:bg-primary/80 transition-all duration-200"
               >
                 Send Message
               </button>

@@ -10,28 +10,29 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#e63946', // neon red
-        background: '#121212', // dark background
-        surface: '#1e1e1e', // slightly lighter dark
-        highlight: '#f1faee', // light highlight
-        accent: '#2a2a2a', // medium dark
+        primary: '#1f2937', // dark gray instead of neon red
+        background: '#ffffff', // white background
+        surface: '#f9fafb', // light gray surface
+        highlight: '#111827', // dark text
+        accent: '#e5e7eb', // light gray accent
+        border: '#d1d5db', // border color
       },
       fontFamily: {
         'space': ['Space Grotesk', 'monospace'],
         'inter': ['Inter', 'sans-serif'],
       },
       animation: {
-        'glow': 'glow 2s ease-in-out infinite alternate',
         'float': 'float 6s ease-in-out infinite',
+        'fade-in': 'fadeIn 0.5s ease-in-out',
       },
       keyframes: {
-        glow: {
-          '0%': { boxShadow: '0 0 5px #e63946, 0 0 10px #e63946, 0 0 15px #e63946' },
-          '100%': { boxShadow: '0 0 10px #e63946, 0 0 20px #e63946, 0 0 30px #e63946' },
-        },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0px)' },
         },
       },
     },

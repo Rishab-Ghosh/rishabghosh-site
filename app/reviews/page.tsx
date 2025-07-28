@@ -47,11 +47,11 @@ export default function Reviews() {
   ];
 
   const getRatingColor = (rating: number) => {
-    if (rating >= 9) return 'text-green-400';
-    if (rating >= 8) return 'text-blue-400';
-    if (rating >= 7) return 'text-yellow-400';
-    if (rating >= 6) return 'text-orange-400';
-    return 'text-red-400';
+    if (rating >= 9) return 'text-green-600';
+    if (rating >= 8) return 'text-blue-600';
+    if (rating >= 7) return 'text-yellow-600';
+    if (rating >= 6) return 'text-orange-600';
+    return 'text-red-600';
   };
 
   return (
@@ -62,7 +62,7 @@ export default function Reviews() {
           <h1 className="text-5xl sm:text-6xl font-space font-bold text-highlight mb-6">
             MOVIE REVIEWS
           </h1>
-          <p className="text-xl font-inter text-highlight/70 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl font-inter text-highlight/60 max-w-3xl mx-auto leading-relaxed">
             My hot takes on the latest films. Because apparently watching movies and having opinions 
             qualifies as content creation now.
           </p>
@@ -73,7 +73,7 @@ export default function Reviews() {
           {reviews.map((review, index) => (
             <div 
               key={index}
-              className="group bg-surface/50 rounded-lg overflow-hidden border border-primary/20 hover:border-primary/50 transition-all duration-300 hover:scale-105"
+              className="group bg-surface rounded-lg overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-lg"
             >
               {/* Poster */}
               <div className="relative h-64 overflow-hidden">
@@ -82,7 +82,7 @@ export default function Reviews() {
                   alt={review.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
-                <div className="absolute top-4 right-4 bg-background/80 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center">
+                <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center">
                   <span className={`text-lg font-space font-bold ${getRatingColor(review.rating)}`}>
                     {review.rating}
                   </span>
@@ -91,10 +91,10 @@ export default function Reviews() {
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="text-xl font-space font-semibold text-primary mb-3 group-hover:neon-glow transition-all duration-300">
+                <h3 className="text-xl font-space font-semibold text-primary mb-3 group-hover:text-gradient transition-all duration-300">
                   {review.title}
                 </h3>
-                <p className="text-highlight/80 font-inter text-sm leading-relaxed mb-4">
+                <p className="text-highlight/70 font-inter text-sm leading-relaxed mb-4">
                   {review.hotTake}
                 </p>
                 
@@ -129,7 +129,7 @@ export default function Reviews() {
 
         {/* Stats */}
         <div className="mt-20 text-center">
-          <div className="bg-surface/30 rounded-lg p-8 border border-primary/20 max-w-2xl mx-auto">
+          <div className="bg-surface/50 rounded-lg p-8 border border-border max-w-2xl mx-auto">
             <h3 className="text-2xl font-space font-bold text-primary mb-4">
               REVIEW STATS
             </h3>

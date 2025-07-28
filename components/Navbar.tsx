@@ -19,18 +19,19 @@ export default function Navbar() {
     { href: '/about', label: 'About' },
     { href: '/projects', label: 'Projects' },
     { href: '/reviews', label: 'Reviews' },
+    { href: '/blog', label: 'Blog' },
     { href: '/creative', label: 'Creative' },
     { href: '/contact', label: 'Contact' },
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-primary/20">
+    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="text-xl font-space font-bold text-primary neon-glow">
+          <Link href="/" className="text-xl font-space font-bold text-primary">
             RISHAB
           </Link>
-          
+
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
@@ -38,8 +39,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`text-sm font-inter font-medium transition-all duration-200 hover:text-primary ${
                   pathname === link.href
-                    ? 'text-primary neon-glow'
-                    : 'text-highlight/80 hover:text-primary'
+                    ? 'text-primary'
+                    : 'text-highlight/70 hover:text-primary'
                 }`}
               >
                 {link.label}

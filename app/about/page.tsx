@@ -47,22 +47,64 @@ export default function About() {
   ];
 
   return (
-    <div className="min-h-screen bg-background py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl sm:text-6xl font-space font-bold text-highlight mb-6">
-            ABOUT ME
-          </h1>
-          <p className="text-xl font-inter text-highlight/70 max-w-3xl mx-auto leading-relaxed">
-            McCombs student by day, poker strategist by night. I&apos;m passionate about quantitative finance, 
-            venture capital, and building things that actually work. Also, I&apos;m pretty good at blackjack.
-          </p>
-        </div>
+    <div className="min-h-screen bg-background">
+      {/* Hero Section with Photo */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Photo */}
+            <div className="order-2 lg:order-1">
+              <div className="relative">
+                <div className="w-full max-w-md mx-auto">
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                    <img 
+                      src="/images/rishab-profile.jpg" 
+                      alt="Rishab Ghosh" 
+                      className="w-full h-auto object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+                  </div>
+                  {/* Decorative elements */}
+                  <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary/20 rounded-full animate-float"></div>
+                  <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-primary/30 rounded-full animate-float" style={{animationDelay: '2s'}}></div>
+                </div>
+              </div>
+            </div>
 
-        {/* Timeline */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-space font-bold text-primary neon-glow text-center mb-12">
+            {/* Content */}
+            <div className="order-1 lg:order-2">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-space font-bold text-highlight mb-6">
+                ABOUT ME
+              </h1>
+              <p className="text-xl font-inter text-highlight/60 mb-8 leading-relaxed">
+                McCombs student by day, poker strategist by night. I&apos;m passionate about quantitative finance, 
+                venture capital, and building things that actually work. Also, I&apos;m pretty good at blackjack.
+              </p>
+              
+              {/* Quick Stats */}
+              <div className="grid grid-cols-3 gap-6 mb-8">
+                <div className="text-center">
+                  <div className="text-2xl font-space font-bold text-primary">3+</div>
+                  <div className="text-sm font-inter text-highlight/60">Years Experience</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-space font-bold text-primary">10+</div>
+                  <div className="text-sm font-inter text-highlight/60">Projects Built</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-space font-bold text-primary">∞</div>
+                  <div className="text-sm font-inter text-highlight/60">Poker Hands</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-surface/30">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-space font-bold text-primary text-center mb-12">
             THE TIMELINE
           </h2>
           
@@ -76,12 +118,12 @@ export default function About() {
                 
                 <div className="flex items-start space-x-6">
                   {/* Year badge */}
-                  <div className="flex-shrink-0 w-16 h-16 bg-primary/20 border border-primary/40 rounded-full flex items-center justify-center">
+                  <div className="flex-shrink-0 w-16 h-16 bg-primary/10 border border-primary/30 rounded-full flex items-center justify-center">
                     <span className="text-2xl">{item.emoji}</span>
                   </div>
                   
                   {/* Content */}
-                  <div className="flex-1 bg-surface/50 rounded-lg p-6 border border-primary/20 hover:border-primary/40 transition-all duration-300">
+                  <div className="flex-1 bg-background rounded-lg p-6 border border-border hover:border-primary/40 transition-all duration-300 shadow-sm">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-xl font-space font-semibold text-primary">
                         {item.title}
@@ -90,7 +132,7 @@ export default function About() {
                         {item.year}
                       </span>
                     </div>
-                    <p className="text-highlight/80 font-inter leading-relaxed">
+                    <p className="text-highlight/70 font-inter leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -99,16 +141,18 @@ export default function About() {
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Skills */}
-        <div>
-          <h2 className="text-3xl font-space font-bold text-primary neon-glow text-center mb-12">
+      {/* Skills Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-space font-bold text-primary text-center mb-12">
             SKILLS & EXPERTISE
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {skills.map((skill, index) => (
-              <div key={index} className="bg-surface/50 rounded-lg p-6 border border-primary/20 hover:border-primary/40 transition-all duration-300">
+              <div key={index} className="bg-surface rounded-lg p-6 border border-border hover:border-primary/40 transition-all duration-300 shadow-sm">
                 <h3 className="text-xl font-space font-semibold text-primary mb-4">
                   {skill.category}
                 </h3>
@@ -116,7 +160,7 @@ export default function About() {
                   {skill.items.map((item, itemIndex) => (
                     <div key={itemIndex} className="flex items-center space-x-2">
                       <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span className="text-highlight/80 font-inter text-sm">
+                      <span className="text-highlight/70 font-inter text-sm">
                         {item}
                       </span>
                     </div>
@@ -126,20 +170,22 @@ export default function About() {
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Fun fact */}
-        <div className="mt-20 text-center">
-          <div className="bg-surface/30 rounded-lg p-8 border border-primary/20 max-w-2xl mx-auto">
+      {/* Fun fact */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-surface/30">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="bg-background rounded-lg p-8 border border-border max-w-2xl mx-auto shadow-sm">
             <h3 className="text-2xl font-space font-bold text-primary mb-4">
               FUN FACT
             </h3>
-            <p className="text-highlight/80 font-inter">
+            <p className="text-highlight/70 font-inter">
               I once calculated the optimal betting strategy for a casino game using Python. 
               The casino wasn&apos;t happy, but my wallet was. 🎰
             </p>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 } 

@@ -21,15 +21,15 @@
 }
 
 @layer components {
-  .neon-glow {
-    text-shadow: 0 0 10px #e63946, 0 0 20px #e63946, 0 0 30px #e63946;
-  }
-  
   .card-hover {
     @apply transition-all duration-300 hover:scale-105 hover:shadow-lg;
   }
   
-  .neon-border {
-    @apply border border-primary/30 hover:border-primary/60 transition-colors duration-300;
+  .border-hover {
+    @apply border border-border hover:border-primary/60 transition-colors duration-300;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-gray-600 bg-clip-text text-transparent;
   }
 } 
