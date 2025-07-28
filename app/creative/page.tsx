@@ -53,113 +53,114 @@ export default function Creative() {
   ];
 
   return (
-    <div className="min-h-screen bg-background py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl sm:text-6xl font-space font-bold text-highlight mb-6">
-            CREATIVE CORNER
-          </h1>
-          <p className="text-xl font-inter text-highlight/60 max-w-3xl mx-auto leading-relaxed">
-            Videos, music, and creative projects I&apos;m working on. Because apparently I have hobbies 
-            beyond staring at spreadsheets.
-          </p>
-        </div>
-
-        {/* YouTube Section */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-space font-bold text-primary text-center mb-12">
-            🎥 RECENT VIDEOS
-          </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-            {videos.map((video, index) => (
-              <div key={index} className="space-y-4">
-                <h3 className="text-lg font-space font-semibold text-primary leading-tight">
-                  {video.title}
-                </h3>
-                <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                  <iframe
-                    className="absolute top-0 left-0 w-full h-full rounded-lg border border-border"
-                    src={video.embedUrl}
-                    title={video.title}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-                <p className="text-highlight/70 font-inter text-sm">
-                  {video.description}
-                </p>
-              </div>
-            ))}
+    <div className="min-h-screen bg-gradient-mesh">
+      <div className="py-20 px-4 sm:px-6 lg:px-8 mr-20">
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16 content-slide-in">
+            <h1 className="text-5xl sm:text-6xl font-space font-bold text-highlight mb-6">
+              CREATIVE CORNER
+            </h1>
+            <p className="text-xl font-inter text-text/60 max-w-3xl mx-auto leading-relaxed">
+              Videos, music, and creative projects I&apos;m working on. Because apparently I have hobbies 
+              beyond staring at spreadsheets.
+            </p>
           </div>
-        </div>
 
-        {/* Spotify Section - Horizontal Ribbon */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-space font-bold text-primary text-center mb-12">
-            🎧 CURRENTLY LISTENING
-          </h2>
-          
-          {/* Playlist Ribbon */}
-          <div className="overflow-x-auto pb-4">
-            <div className="flex space-x-6 min-w-max">
-              {playlists.map((playlist, index) => (
-                <div key={index} className="flex-shrink-0 w-80 bg-surface rounded-lg p-6 border border-border hover:border-primary/40 transition-all duration-300">
-                  <div className="text-center mb-4">
-                    <div className="flex items-center justify-center mb-2">
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-inter font-medium rounded-full">
-                        {playlist.type}
-                      </span>
-                    </div>
-                    <h3 className="text-lg font-space font-semibold text-primary mb-2">
-                      {playlist.title}
-                    </h3>
-                    <p className="text-highlight/70 font-inter text-sm leading-relaxed">
-                      {playlist.description}
-                    </p>
-                  </div>
-                  
-                  <div className="flex justify-center">
+          {/* YouTube Section */}
+          <div className="mb-20">
+            <h2 className="text-3xl font-space font-bold text-gradient text-center mb-12 content-slide-up">
+              🎥 RECENT VIDEOS
+            </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+              {videos.map((video, index) => (
+                <div key={index} className="space-y-4 content-slide-up" style={{animationDelay: `${0.1 * index}s`}}>
+                  <h3 className="text-lg font-space font-semibold text-primary leading-tight">
+                    {video.title}
+                  </h3>
+                  <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
                     <iframe
-                      className="rounded-lg border border-border"
-                      style={{ width: '100%', height: '380px' }}
-                      src={playlist.embedUrl}
-                      title={playlist.title}
+                      className="absolute top-0 left-0 w-full h-full rounded-lg border border-border/50"
+                      src={video.embedUrl}
+                      title={video.title}
                       frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
-                      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture; loading=lazy"
                     ></iframe>
                   </div>
+                  <p className="text-text/70 font-inter text-sm">
+                    {video.description}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
-          
-          {/* Scroll indicator */}
-          <div className="text-center mt-4">
-            <p className="text-highlight/60 font-inter text-sm">
-              ← Scroll to explore more music →
-            </p>
-          </div>
-        </div>
 
-        {/* Call to Action */}
-        <div className="text-center">
-          <div className="bg-surface/50 rounded-lg p-8 border border-border max-w-2xl mx-auto">
-            <h3 className="text-2xl font-space font-bold text-primary mb-4">
-              WANT TO COLLABORATE?
-            </h3>
-            <p className="text-highlight/70 font-inter mb-6 max-w-2xl mx-auto">
-              I&apos;m always open to creative collaborations, podcast appearances, or just chatting about 
-              quant finance, startups, or poker strategy. Hit me up!
-            </p>
-            <a
-              href="/contact"
-              className="inline-flex items-center px-6 py-3 bg-primary text-background font-space font-semibold rounded-lg hover:bg-primary/80 transition-all duration-200"
-            >
-              Get In Touch
-            </a>
+          {/* Spotify Section - Horizontal Ribbon */}
+          <div className="mb-20">
+            <h2 className="text-3xl font-space font-bold text-gradient text-center mb-12 content-slide-up">
+              🎧 CURRENTLY LISTENING
+            </h2>
+
+            {/* Playlist Ribbon */}
+            <div className="overflow-x-auto pb-4">
+              <div className="flex space-x-6 min-w-max">
+                {playlists.map((playlist, index) => (
+                  <div key={index} className="flex-shrink-0 w-80 bg-surface/50 backdrop-blur-md rounded-lg p-6 border border-border/50 hover:border-primary/40 transition-all duration-300 content-slide-up" style={{animationDelay: `${0.1 * index}s`}}>
+                    <div className="text-center mb-4">
+                      <div className="flex items-center justify-center mb-2">
+                        <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-inter font-medium rounded-full">
+                          {playlist.type}
+                        </span>
+                      </div>
+                      <h3 className="text-lg font-space font-semibold text-primary mb-2">
+                        {playlist.title}
+                      </h3>
+                      <p className="text-text/70 font-inter text-sm leading-relaxed">
+                        {playlist.description}
+                      </p>
+                    </div>
+                    <div className="flex justify-center">
+                      <iframe
+                        className="rounded-lg border border-border/50"
+                        style={{ width: '100%', height: '380px' }}
+                        src={playlist.embedUrl}
+                        title={playlist.title}
+                        frameBorder="0"
+                        allowFullScreen
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture; loading=lazy"
+                      ></iframe>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Scroll indicator */}
+            <div className="text-center mt-4 content-slide-up">
+              <p className="text-text/60 font-inter text-sm">
+                ← Scroll to explore more music →
+              </p>
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div className="text-center content-slide-up">
+            <div className="bg-surface/50 backdrop-blur-md rounded-lg p-8 border border-border/50 max-w-2xl mx-auto">
+              <h3 className="text-2xl font-space font-bold text-gradient mb-4">
+                WANT TO COLLABORATE?
+              </h3>
+              <p className="text-text/70 font-inter mb-6 max-w-2xl mx-auto">
+                I&apos;m always open to creative collaborations, podcast appearances, or just chatting about
+                quant finance, startups, or poker strategy. Hit me up!
+              </p>
+              <a
+                href="/contact"
+                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white font-space font-semibold rounded-lg hover:scale-105 transition-all duration-200"
+              >
+                Get In Touch
+              </a>
+            </div>
           </div>
         </div>
       </div>

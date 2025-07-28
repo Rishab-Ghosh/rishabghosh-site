@@ -47,109 +47,95 @@ export default function Reviews() {
   ];
 
   const getRatingColor = (rating: number) => {
-    if (rating >= 9) return 'text-green-600';
-    if (rating >= 8) return 'text-blue-600';
-    if (rating >= 7) return 'text-yellow-600';
-    if (rating >= 6) return 'text-orange-600';
-    return 'text-red-600';
+    if (rating >= 9) return 'text-green-400';
+    if (rating >= 8) return 'text-blue-400';
+    if (rating >= 7) return 'text-yellow-400';
+    if (rating >= 6) return 'text-orange-400';
+    return 'text-red-400';
   };
 
   return (
-    <div className="min-h-screen bg-background py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl sm:text-6xl font-space font-bold text-highlight mb-6">
-            MOVIE REVIEWS
-          </h1>
-          <p className="text-xl font-inter text-highlight/60 max-w-3xl mx-auto leading-relaxed">
-            My hot takes on the latest films. Because apparently watching movies and having opinions 
-            qualifies as content creation now.
-          </p>
-        </div>
+    <div className="min-h-screen bg-gradient-mesh">
+      <div className="py-20 px-4 sm:px-6 lg:px-8 mr-20">
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16 content-slide-in">
+            <h1 className="text-5xl sm:text-6xl font-space font-bold text-highlight mb-6">
+              MOVIE REVIEWS
+            </h1>
+            <p className="text-xl font-inter text-text/60 max-w-3xl mx-auto leading-relaxed">
+              My hot takes on the latest films. Because apparently watching movies and having opinions 
+              qualifies as content creation now.
+            </p>
+          </div>
 
-        {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reviews.map((review, index) => (
-            <div 
-              key={index}
-              className="group bg-surface rounded-lg overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-lg"
-            >
-              {/* Poster */}
-              <div className="relative h-64 overflow-hidden">
-                <img 
-                  src={review.poster} 
-                  alt={review.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center">
-                  <span className={`text-lg font-space font-bold ${getRatingColor(review.rating)}`}>
-                    {review.rating}
-                  </span>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-space font-semibold text-primary mb-3 group-hover:text-gradient transition-all duration-300">
-                  {review.title}
-                </h3>
-                <p className="text-highlight/70 font-inter text-sm leading-relaxed mb-4">
-                  {review.hotTake}
-                </p>
-                
-                {/* Rating */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-1">
-                    {[...Array(10)].map((_, i) => (
-                      <div
-                        key={i}
-                        className={`w-2 h-2 rounded-full ${
-                          i < review.rating ? 'bg-primary' : 'bg-accent'
-                        }`}
-                      />
-                    ))}
+          {/* Reviews Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {reviews.map((review, index) => (
+              <div 
+                key={index}
+                className="group bg-surface/50 backdrop-blur-md rounded-lg overflow-hidden border border-border/50 hover:border-primary/50 transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-lg content-slide-up"
+                style={{animationDelay: `${0.1 * index}s`}}
+              >
+                {/* Poster */}
+                <div className="relative h-64 overflow-hidden">
+                  <img 
+                    src={review.poster} 
+                    alt={review.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center">
+                    <span className={`text-lg font-space font-bold ${getRatingColor(review.rating)}`}>
+                      {review.rating}
+                    </span>
                   </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="text-xl font-space font-semibold text-primary mb-3 group-hover:text-gradient transition-all duration-300">
+                    {review.title}
+                  </h3>
+                  <p className="text-text/70 font-inter text-sm leading-relaxed mb-4">
+                    {review.hotTake}
+                  </p>
                   
                   {review.longReview && (
                     <a
                       href={review.longReview}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs font-inter text-primary hover:text-primary/80 transition-colors duration-200"
+                      className="inline-flex items-center text-primary font-inter font-medium text-sm hover:text-primary/80 transition-colors duration-200"
                     >
-                      Read More →
+                      Read Full Review
+                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
                     </a>
                   )}
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Stats */}
-        <div className="mt-20 text-center">
-          <div className="bg-surface/50 rounded-lg p-8 border border-border max-w-2xl mx-auto">
-            <h3 className="text-2xl font-space font-bold text-primary mb-4">
-              REVIEW STATS
-            </h3>
-            <div className="grid grid-cols-3 gap-6">
-              <div>
-                <div className="text-3xl font-space font-bold text-highlight">{reviews.length}</div>
-                <div className="text-highlight/60 font-inter text-sm">Movies Reviewed</div>
-              </div>
-              <div>
-                <div className="text-3xl font-space font-bold text-highlight">
-                  {(reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1)}
-                </div>
-                <div className="text-highlight/60 font-inter text-sm">Average Rating</div>
-              </div>
-              <div>
-                <div className="text-3xl font-space font-bold text-highlight">
-                  {reviews.filter(r => r.rating >= 8).length}
-                </div>
-                <div className="text-highlight/60 font-inter text-sm">8+ Ratings</div>
-              </div>
+          {/* Call to Action */}
+          <div className="text-center mt-16">
+            <div className="bg-surface/50 backdrop-blur-md rounded-lg p-8 border border-border/50 max-w-2xl mx-auto content-slide-up">
+              <h3 className="text-2xl font-space font-bold text-gradient mb-4">
+                MORE REVIEWS COMING SOON
+              </h3>
+              <p className="text-text/70 font-inter mb-6">
+                I watch a lot of movies. Like, a concerning amount. Follow me on Letterboxd for more hot takes
+                and questionable opinions about cinema.
+              </p>
+              <a
+                href="https://letterboxd.com/rishabghosh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white font-space font-semibold rounded-lg hover:scale-105 transition-all duration-200"
+              >
+                Follow on Letterboxd
+              </a>
             </div>
           </div>
         </div>
