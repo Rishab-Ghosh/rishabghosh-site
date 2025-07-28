@@ -56,12 +56,35 @@ export default function About() {
             <div className="order-2 lg:order-1">
               <div className="relative">
                 <div className="w-full max-w-md mx-auto">
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-surface border border-border">
                     <img 
                       src="/images/rishab-profile.jpg" 
                       alt="Rishab Ghosh" 
-                      className="w-full h-auto object-cover"
+                      className="w-full h-auto object-cover min-h-[400px]"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        const fallback = target.nextElementSibling as HTMLElement;
+                        if (target && fallback) {
+                          target.style.display = 'none';
+                          fallback.style.display = 'flex';
+                        }
+                      }}
                     />
+                    {/* Fallback placeholder */}
+                    <div 
+                      className="hidden w-full h-[400px] bg-gradient-to-br from-primary/10 to-accent/20 flex items-center justify-center"
+                      style={{ display: 'none' }}
+                    >
+                      <div className="text-center">
+                        <div className="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <svg className="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                          </svg>
+                        </div>
+                        <p className="text-primary font-inter text-sm">Add your photo here</p>
+                        <p className="text-highlight/60 font-inter text-xs mt-1">rishab-profile.jpg</p>
+                      </div>
+                    </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
                   </div>
                   {/* Decorative elements */}
