@@ -11,7 +11,7 @@ export default function Home() {
           <div className="text-center content-slide-in">
             {/* Main Heading */}
             <h1 className="text-6xl sm:text-7xl lg:text-8xl font-space font-bold mb-6">
-              <span className="text-gradient">Whats Up?, I&apos;M</span>
+              <span className="text-gradient">Whats Up?, I&apos;M!</span>
               <br />
               <span className="text-highlight">RISHAB GHOSH</span>
             </h1>
