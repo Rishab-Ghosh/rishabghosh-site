@@ -30,35 +30,31 @@ export interface Feature {
 
 export const bio: Bio = {
   name: "Rishab Ghosh",
-  title: "Hi, I'm Rishab Ghosh",
-  subtitle: "Quant | VC | Builder | Blackjack Enjoyer",
-  description: "I'm a McCombs student passionate about quantitative finance, poker strategy, and startup ecosystems. I love leveraging data-driven decision making to solve complex problems and build innovative solutions. When I'm not analyzing markets or coding, you can find me at the poker table or exploring new technologies.",
-  aboutDescription: "I'm a McCombs student passionate about quantitative finance and venture capital, with a love for building startups and analyzing poker strategy. I believe in data-driven decision making and creating innovative solutions that make a difference.",
+  title: "What's up there, I'm Rishab Ghosh",
+  subtitle: "Finance | VC | Builder | Poker",
+  description: "I'm a McCombs student passionate about finance, poker strategy, and startup ecosystems. I love leveraging data-driven decision making to solve complex problems and build innovative solutions. When I'm not analyzing markets or coding, you can find me at the poker table or exploring new technologies.",
+  aboutDescription: "I'm a McCombs student passionate about finance and venture capital, with a love for building startups and analyzing poker strategy. I believe in data-driven decision making and creating innovative solutions that make a difference.",
   email: "rishabghosh@utexas.edu",
   resumeUrl: "/resume.pdf"
 };
 
 export const milestones: Milestone[] = [
   {
-    year: "2018–2021",
-    title: "Math & Science Academy",
-    description: "Strong STEM foundation and academic excellence"
-  },
-  {
-    year: "2021–present",
+    year: "2024–present",
     title: "McCombs School of Business",
-    description: "Finance + Computer Science, building quantitative skills"
+    description: "Finance + Math + CS Certificate"
   },
   {
-    year: "2024",
+    year: " Summer 2025 (May-August)",
+    title: "Risk Management and Options Trading: Repsol",
+    description: "Volatility analysis and poker training applications"
+  },
+  {
+    year: "Winter 2025",
     title: "Arbor Ventures Internship",
     description: "Venture capital experience and startup evaluation"
   },
-  {
-    year: "2025",
-    title: "Building Tools",
-    description: "Volatility analysis and poker training applications"
-  }
+  
 ];
 
 export const skills: Skill[] = [

@@ -11,21 +11,19 @@ export default function Home() {
           <div className="text-center content-slide-in">
             {/* Main Heading */}
             <h1 className="text-6xl sm:text-7xl lg:text-8xl font-space font-bold mb-6">
-              <span className="text-gradient">HI, I&apos;M</span>
+              <span className="text-gradient">Whats Up?, I&apos;M</span>
               <br />
               <span className="text-highlight">RISHAB GHOSH</span>
             </h1>
 
             {/* Subheading */}
             <p className="text-2xl sm:text-3xl font-inter text-text/80 mb-8 leading-relaxed">
-              Quant • VC • Builder • Blackjack Enjoyer
+              Finance • Amateur Builder • Cinephile • Poker
             </p>
 
             {/* Bio */}
             <p className="text-lg font-inter text-text/70 max-w-3xl mx-auto mb-12 leading-relaxed">
-              McCombs student by day, poker strategist by night. I&apos;m passionate about quantitative finance,
-              venture capital, and building things that actually work. Currently exploring the intersection
-              of technology and finance while trying to beat the house.
+            I&apos;m currently at the University of Texas at Austin McCombs School of Business, studying Finance. I care particularly about sustainability, the start-up scene, and testing how much I can learn through a series of infinite side quests. 
             </p>
 
             {/* CTA Buttons */}
@@ -49,7 +47,7 @@ export default function Home() {
             {/* Social Links */}
             <div className="flex justify-center space-x-6">
               <a
-                href="https://github.com/rishabghosh"
+                href="https://github.com/Rishab-Ghosh"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 bg-surface/50 backdrop-blur-md border border-border/50 rounded-lg flex items-center justify-center text-text/60 hover:text-primary hover:border-primary/50 transition-all duration-300 hover:scale-110"
@@ -89,7 +87,7 @@ export default function Home() {
                     Movie Reviews
                   </h3>
                   <p className="text-text/70 font-inter">
-                    My hot takes on the latest films. Because apparently I have opinions about everything.
+                    My hot takes on the latest films. Trust me, I have opinions about everything.
                   </p>
                 </div>
               </Link>
@@ -104,7 +102,8 @@ export default function Home() {
                     Projects
                   </h3>
                   <p className="text-text/70 font-inter">
-                    Things I&apos;ve built. From volatility dashboards to portfolio optimizers.
+                    Things I'&apos;'ve built thus far, still just at the edifice of my learning curve.
+                  
                   </p>
                 </div>
               </Link>
@@ -119,7 +118,8 @@ export default function Home() {
                     Creative Corner
                   </h3>
                   <p className="text-text/70 font-inter">
-                    Videos, music, and creative projects. Because I have hobbies beyond spreadsheets.
+                    Videos, music, and creative projects. (I have hobbies beyond spreadsheets an dnetworking
+                    .)
                   </p>
                 </div>
               </Link>

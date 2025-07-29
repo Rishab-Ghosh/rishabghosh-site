@@ -4,10 +4,10 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="text-text/60 text-sm font-inter">
-            © 2024 Rishab Ghosh. Built with Next.js, TypeScript, and a lot of caffeine.
+            © 2024 Rishab Ghosh. Built with Next.js, TypeScript, and a lot of Celsius.
           </p>
           <p className="text-primary/60 text-xs font-space mt-2">
-            QUANT • VC • BUILDER • BLACKJACK ENJOYER
+          Finance • Amateur Builder • Cinephile • Poker
           </p>
         </div>
       </div>
