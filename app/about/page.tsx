@@ -9,6 +9,33 @@ export default function About() {
       emoji: "🎓"
     },
     {
+      year: "Early 2023",
+      title: "Americanomics",
+      description: "This was my first self-published book. This was an elementary attempt at addressing an issue I found within the community, and have since done better.",
+      emoji: "📖",
+      link: "https://www.amazon.com/Americanomics-Basics-Our-Country-Economy/dp/B0CDNFCZSD"
+    },
+    {
+      year: "June 2023-May 2024",
+      title: "FLIN Company",
+      description: "Co-founded a venture aimed towards mitigating the lack of financial literacy, the Financial Literacy Interactive Notebook (or F.L.I.N), garnering over $9.6K in 6 months",
+      emoji: "📚",
+      subItems: [
+        {
+          title: "Rep. Troy E. Nehls Meets with TX-22 Students in Our Nation's Capital",
+          link: "https://myemail.constantcontact.com/The-Nehls-Newsflash.html?soid=1135128515757&aid=Jz4Ba4VDuXQ",
+          image: "/images/flin-congress.jpg",
+          source: "Rep. Nehls"
+        },
+        {
+          title: "Teen-led Houston businesses win national Junior Achievement awards",
+          link: "https://www.bizjournals.com/houston/news/2024/06/17/houston-wins-big-at-junior-achievement-nationals.html",
+          image: "/images/flin-awards.jpg", 
+          source: "Houston Business Journal"
+        }
+      ]
+    },
+    {
       year: "2023",
       title: "Arbor Ventures Internship",
       description: "Spent the summer analyzing startups and learning that most pitch decks are just fancy PowerPoint presentations. But hey, some of them actually work.",
@@ -19,12 +46,6 @@ export default function About() {
       title: "First Quant Project",
       description: "Built my first volatility surface dashboard. Because staring at numbers all day wasn't enough, I needed pretty graphs too.",
       emoji: "📊"
-    },
-    {
-      year: "2021",
-      title: "Discovered Poker",
-      description: "Found out that probability theory is actually useful in real life. The casino wasn't happy, but my wallet was.",
-      emoji: "🃏"
     }
   ];
 
@@ -140,15 +161,67 @@ export default function About() {
                   <div className="flex-1 bg-surface/50 backdrop-blur-md rounded-lg p-6 border border-border/50 hover:border-primary/40 transition-all duration-300 shadow-sm">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-xl font-space font-semibold text-primary">
-                        {item.title}
+                        {item.link ? (
+                          <a 
+                            href={item.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-primary/80 transition-colors duration-200"
+                          >
+                            {item.title}
+                          </a>
+                        ) : (
+                          item.title
+                        )}
                       </h3>
                       <span className="text-sm font-inter text-text/60 bg-accent/20 px-3 py-1 rounded-full">
                         {item.year}
                       </span>
                     </div>
-                    <p className="text-text/70 font-inter leading-relaxed">
+                    <p className="text-text/70 font-inter leading-relaxed mb-4">
                       {item.description}
                     </p>
+                    
+                    {/* Sub-items */}
+                    {item.subItems && (
+                      <div className="space-y-3">
+                        {item.subItems.map((subItem, subIndex) => (
+                          <div key={subIndex} className="flex items-center space-x-3 p-3 bg-background/30 rounded-lg border border-border/30 hover:border-primary/30 transition-all duration-200">
+                            <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg overflow-hidden">
+                              <img 
+                                src={subItem.image} 
+                                alt={subItem.title}
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                  const target = e.currentTarget;
+                                  const fallback = target.nextElementSibling as HTMLElement;
+                                  if (target && fallback) {
+                                    target.style.display = 'none';
+                                    fallback.style.display = 'flex';
+                                  }
+                                }}
+                              />
+                              <div className="hidden w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                                <span className="text-primary text-xs">📰</span>
+                              </div>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <a 
+                                href={subItem.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block text-sm font-inter text-primary hover:text-primary/80 transition-colors duration-200 truncate"
+                              >
+                                {subItem.title}
+                              </a>
+                              <p className="text-xs font-inter text-text/50">
+                                {subItem.source}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
