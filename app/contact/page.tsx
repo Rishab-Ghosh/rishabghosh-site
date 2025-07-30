@@ -32,7 +32,7 @@ export default function Contact() {
               LET&apos;S CONNECT
             </h1>
             <p className="text-xl font-inter text-text/60 max-w-2xl mx-auto leading-relaxed">
-              I&apos;m always for a for a convo especially if you have a good story, idea, or hate one of my opinions. (really anything interesting.)
+              I&apos;m always down for a convo especially if you have a good story, idea, or hate one of my opinions. (really anything interesting.)
               Hit me up if you want to build something cool together.
             </p>
           </div>

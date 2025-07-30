@@ -102,8 +102,7 @@ export default function Home() {
                     Projects
                   </h3>
                   <p className="text-text/70 font-inter">
-                    Things I'&apos;'ve built thus far, still just at the edifice of my learning curve.
-                  
+                    Things I&apos;ve built thus far, still just at the edifice of my learning curve.
                   </p>
                 </div>
               </Link>
@@ -118,8 +117,7 @@ export default function Home() {
                     Creative Corner
                   </h3>
                   <p className="text-text/70 font-inter">
-                    Videos, music, and creative projects. (I have hobbies beyond spreadsheets an dnetworking
-                    .)
+                    Videos, music, and creative projects. (I have hobbies beyond spreadsheets and networking.)
                   </p>
                 </div>
               </Link>

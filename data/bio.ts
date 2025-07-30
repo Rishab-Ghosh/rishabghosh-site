@@ -53,8 +53,7 @@ export const milestones: Milestone[] = [
     year: "Winter 2025",
     title: "Arbor Ventures Internship",
     description: "Venture capital experience and startup evaluation"
-  },
-  
+  }
 ];
 
 export const skills: Skill[] = [
