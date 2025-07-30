@@ -4,16 +4,28 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-mesh">
+    <div className="min-h-screen bg-gradient-mesh animated-bg">
+      {/* Animated Background Elements */}
+      <div className="gradient-orb" style={{ top: '10%', left: '10%' }}></div>
+      <div className="gradient-orb" style={{ top: '60%', right: '20%' }}></div>
+      <div className="gradient-orb" style={{ bottom: '20%', left: '50%' }}></div>
+      
+      {/* Floating Particles */}
+      <div className="floating-particle" style={{ top: '20%', left: '15%', animationDelay: '0s' }}></div>
+      <div className="floating-particle" style={{ top: '40%', right: '25%', animationDelay: '2s' }}></div>
+      <div className="floating-particle" style={{ top: '70%', left: '30%', animationDelay: '4s' }}></div>
+      <div className="floating-particle" style={{ top: '30%', right: '10%', animationDelay: '6s' }}></div>
+      <div className="floating-particle" style={{ top: '80%', right: '40%', animationDelay: '8s' }}></div>
+      <div className="floating-particle" style={{ top: '10%', right: '60%', animationDelay: '10s' }}></div>
       {/* Hero Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 mr-20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center content-slide-in">
             {/* Main Heading */}
             <h1 className="text-6xl sm:text-7xl lg:text-8xl font-space font-bold mb-6">
-              <span className="text-gradient">Whats Up?</span>
+              <span className="text-gradient animate-glow">Whats Up?</span>
               <br />
-              <span className="text-highlight">I&apos;m Rishab</span>
+              <span className="text-highlight animate-float">I&apos;m Rishab</span>
             </h1>
 
             {/* Subheading */}
@@ -81,7 +93,7 @@ export default function Home() {
             {/* Reviews Card */}
             <div className="content-slide-up" style={{animationDelay: '0.1s'}}>
               <Link href="/reviews" className="block">
-                <div className="bg-surface/50 backdrop-blur-md border border-border/50 rounded-lg p-8 hover:border-primary/50 transition-all duration-300 hover:scale-105 group">
+                <div className="bg-surface/50 backdrop-blur-md border border-border/50 rounded-lg p-8 hover:border-primary/50 transition-all duration-300 hover:scale-105 group hover:shadow-lg hover:shadow-primary/20">
                   <div className="text-4xl mb-4">🎬</div>
                   <h3 className="text-xl font-space font-semibold text-primary mb-3 group-hover:text-gradient transition-all duration-300">
                     Movie Reviews
@@ -96,7 +108,7 @@ export default function Home() {
             {/* Projects Card */}
             <div className="content-slide-up" style={{animationDelay: '0.2s'}}>
               <Link href="/projects" className="block">
-                <div className="bg-surface/50 backdrop-blur-md border border-border/50 rounded-lg p-8 hover:border-primary/50 transition-all duration-300 hover:scale-105 group">
+                <div className="bg-surface/50 backdrop-blur-md border border-border/50 rounded-lg p-8 hover:border-primary/50 transition-all duration-300 hover:scale-105 group hover:shadow-lg hover:shadow-primary/20">
                   <div className="text-4xl mb-4">🚀</div>
                   <h3 className="text-xl font-space font-semibold text-primary mb-3 group-hover:text-gradient transition-all duration-300">
                     Projects
@@ -111,7 +123,7 @@ export default function Home() {
             {/* Creative Card */}
             <div className="content-slide-up" style={{animationDelay: '0.3s'}}>
               <Link href="/creative" className="block">
-                <div className="bg-surface/50 backdrop-blur-md border border-border/50 rounded-lg p-8 hover:border-primary/50 transition-all duration-300 hover:scale-105 group">
+                <div className="bg-surface/50 backdrop-blur-md border border-border/50 rounded-lg p-8 hover:border-primary/50 transition-all duration-300 hover:scale-105 group hover:shadow-lg hover:shadow-primary/20">
                   <div className="text-4xl mb-4">🎨</div>
                   <h3 className="text-xl font-space font-semibold text-primary mb-3 group-hover:text-gradient transition-all duration-300">
                     Creative Corner
