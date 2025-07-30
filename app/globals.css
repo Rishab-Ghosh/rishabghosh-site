@@ -165,4 +165,56 @@
   66% {
     transform: translate(-50px, 100px) scale(0.8);
   }
+}
+
+/* Casino Slot Machine Animation */
+.slot-machine {
+  position: relative;
+  overflow: hidden;
+  height: 1.2em;
+  display: inline-block;
+}
+
+.slot-reel {
+  display: flex;
+  flex-direction: column;
+  animation: slot-spin 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  transform-origin: center;
+}
+
+.slot-item {
+  height: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+@keyframes slot-spin {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-1.2em);
+  }
+  40% {
+    transform: translateY(-2.4em);
+  }
+  60% {
+    transform: translateY(-3.6em);
+  }
+  80% {
+    transform: translateY(-4.8em);
+  }
+  90% {
+    transform: translateY(-6em);
+  }
+  100% {
+    transform: translateY(-6em);
+  }
 } 

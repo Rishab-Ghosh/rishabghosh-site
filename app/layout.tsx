@@ -3,10 +3,10 @@ import './globals.css';
 import Layout from '@/components/Layout';
 
 export const metadata: Metadata = {
-  title: 'Rishab Ghosh - Quant | VC | Builder',
+  title: 'Rishab.',
   description: 'Personal website of Rishab Ghosh - Quantitative finance, venture capital, and building cool stuff',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/images/rishab-profile.jpg',
   },
 };
 

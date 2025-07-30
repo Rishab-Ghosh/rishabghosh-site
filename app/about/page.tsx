@@ -97,25 +97,19 @@ export default function About() {
                 ABOUT ME
               </h1>
               <p className="text-xl font-inter text-text/60 mb-8 leading-relaxed">
-                McCombs student by day, poker strategist by night. I&apos;m passionate about quantitative finance,
-                venture capital, and building things that actually work. Also, I&apos;m pretty good at blackjack.
+                Hey there! I entered college as a Finance major, and have since begun also studying Mathematics along with a certificate in Computer Science. My interest in finance comes from a love of using analytical thinking and technical skills to tackle real-world questions.
+              </p>
+              <p className="text-xl font-inter text-text/60 mb-8 leading-relaxed">
+                Whether those questions lead me toward M&A, Private Equity, or Venture Capital is still up in the air—I&apos;m just focused on broadening my perspective for now. That same curiosity has also pushed me to build, experiment with new ideas and projects, and watch them either come to life—or crash and burn in a blaze of error messages. That&apos;s part of why I&apos;m drawn to the startup space: I love seeing what real innovators are building to reshape the world.
+              </p>
+              <p className="text-xl font-inter text-text/60 mb-8 leading-relaxed">
+                On campus, I&apos;m an analyst on the Public Fund at the Sustainability Investment Group—the only GSLI (Global Sustainability Leadership Institute) affiliated org at UT—where we manage a ~$12k portfolio. I also work on the Finance Team for the Texas Rocketry and Engineering Lab, supporting the launch of the largest collegiate liquid bi-propellant rocket of its kind.
+              </p>
+              <p className="text-xl font-inter text-text/60 mb-8 leading-relaxed">
+                Or sometimes, I&apos;m just napping in my room.
               </p>
 
-              {/* Quick Stats */}
-              <div className="grid grid-cols-3 gap-6 mb-8">
-                <div className="text-center">
-                  <div className="text-2xl font-space font-bold text-gradient">3+</div>
-                  <div className="text-sm font-inter text-text/60">Years Experience</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-space font-bold text-gradient">10+</div>
-                  <div className="text-sm font-inter text-text/60">Projects Built</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-space font-bold text-gradient">∞</div>
-                  <div className="text-sm font-inter text-text/60">Poker Hands</div>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>
@@ -125,7 +119,7 @@ export default function About() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 mr-20 bg-surface/20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-space font-bold text-gradient text-center mb-12 content-slide-up">
-            THE TIMELINE
+            WHAT I HAVE BEEN UP TO
           </h2>
 
           <div className="space-y-12">

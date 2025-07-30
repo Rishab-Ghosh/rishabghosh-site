@@ -23,7 +23,17 @@ export default function Home() {
           <div className="text-center content-slide-in">
             {/* Main Heading */}
             <h1 className="text-6xl sm:text-7xl lg:text-8xl font-space font-bold mb-6">
-              <span className="text-gradient animate-glow">Whats Up?</span>
+              <div className="slot-machine">
+                <div className="slot-reel">
+                  <div className="slot-item">🎰</div>
+                  <div className="slot-item">🎲</div>
+                  <div className="slot-item">♠️</div>
+                  <div className="slot-item">♥️</div>
+                  <div className="slot-item">♦️</div>
+                  <div className="slot-item">♣️</div>
+                  <div className="slot-item text-gradient">Whats Up?</div>
+                </div>
+              </div>
               <br />
               <span className="text-highlight animate-float">I&apos;m Rishab</span>
             </h1>
