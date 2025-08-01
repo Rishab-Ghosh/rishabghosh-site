@@ -1,40 +1,110 @@
 'use client';
 
+// Video Component
+const VideoEmbed = ({ videoUrl, videoType }: { videoUrl: string; videoType: string }) => {
+  if (!videoUrl) return null;
+
+  const getYouTubeEmbedUrl = (url: string) => {
+    const videoId = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/)?.[1];
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+  };
+
+  const getVimeoEmbedUrl = (url: string) => {
+    const videoId = url.match(/vimeo\.com\/(\d+)/)?.[1];
+    return videoId ? `https://player.vimeo.com/video/${videoId}` : null;
+  };
+
+  switch (videoType) {
+    case 'youtube':
+      const youtubeEmbed = getYouTubeEmbedUrl(videoUrl);
+      return youtubeEmbed ? (
+        <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
+          <iframe
+            src={youtubeEmbed}
+            title="Project Demo"
+            className="w-full h-full"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
+      ) : null;
+
+    case 'vimeo':
+      const vimeoEmbed = getVimeoEmbedUrl(videoUrl);
+      return vimeoEmbed ? (
+        <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
+          <iframe
+            src={vimeoEmbed}
+            title="Project Demo"
+            className="w-full h-full"
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
+      ) : null;
+
+    case 'direct':
+      return (
+        <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
+          <video
+            controls
+            className="w-full h-full object-cover"
+            preload="metadata"
+          >
+            <source src={videoUrl} type="video/mp4" />
+            <source src={videoUrl} type="video/webm" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      );
+
+        default:
+      return null;
+  }
+};
+
 export default function Projects() {
   const projects = [
     {
       title: "Volatility Surface Dashboard",
-      description: "Interactive dashboard for analyzing options volatility surfaces. Built with Python and Streamlit for real-time market data visualization.",
-      techStack: ["Python", "Streamlit", "Pandas", "Plotly", "YFinance"],
-      githubUrl: "https://github.com/rishabghosh/volatility-dashboard",
+      description: "A comprehensive financial volatility analysis pipeline built with Streamlit for processing, visualizing, and analyzing implied volatility surfaces, time series data, and daily volatility shocks.",
+      techStack: ["Python", "Pandas", "NumPy", "Scikit-learn", "Plotly", "Streamlit"],
+      githubUrl: "https://github.com/Rishab-Ghosh/VolPipelineApp",
       demoUrl: null,
+      videoUrl: "https://youtu.be/oC5wD2JDVrU",
+      videoType: "youtube",
       status: "Active"
     },
     {
-      title: "Portfolio Optimizer",
-      description: "Risk-adjusted portfolio optimization tool using modern portfolio theory. Because diversification is just fancy talk for not putting all your eggs in one basket.",
-      techStack: ["Python", "Scikit-learn", "Pandas", "Streamlit"],
-      githubUrl: "https://github.com/rishabghosh/portfolio-optimizer",
-      demoUrl: null,
+      title: "Personal Website",
+      description: "A modern, animated portfolio website featuring casino-style slot machine animations, interactive timeline, and responsive design. Built to showcase my journey from finance to building.",
+      techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "React"],
+      githubUrl: "https://github.com/Rishab-Ghosh/rishabghosh-site",
+      demoUrl: "https://www.rishabghosh.org/",
+      videoUrl: null,
+      videoType: null,
       status: "Active"
-    }
+    },
+
   ];
 
   const comingSoon = [
     {
-      emoji: "🎯",
-      title: "Poker Strategy AI",
-      description: "Machine learning model to analyze poker hands and suggest optimal plays. Because sometimes you need a robot to tell you when to fold."
+      emoji: "🃏",
+      title: "JackSharp",
+      description: "Building the first app with free training modules for GTO, ICM, Blockers, and Blackjack basic strategy"
     },
     {
-      emoji: "📊",
-      title: "Market Sentiment Analyzer",
-      description: "Real-time market sentiment analysis using social media data. Because Twitter is basically a crystal ball for stock prices."
+      emoji: "📈",
+      title: "Peaking Options Dashboard",
+      description: "Building a tree-based volatility modeling engine that blends machine learning with market intuition — capturing nonlinear pricing behavior across structured products."
     },
     {
-      emoji: "🎮",
-      title: "Trading Game",
-      description: "Educational trading simulation game. Because the best way to learn is to lose fake money first."
+      emoji: "🥽",
+      title: "AR Poker Lense",
+      description: "I've had this idea for a long time, but I just don't have the technical skills or refinement to pursue it. If you want to work on it, please reach out."
     }
   ];
 
@@ -47,10 +117,6 @@ export default function Projects() {
             <h1 className="text-5xl sm:text-6xl font-space font-bold text-highlight mb-6">
               PROJECTS
             </h1>
-            <p className="text-xl font-inter text-text/60 max-w-3xl mx-auto leading-relaxed">
-              Here are some of the things I&apos;ve built, combining my passion for quantitative finance, 
-              technology, and creating tools that actually work. No PowerPoint presentations here.
-            </p>
           </div>
 
           {/* Active Projects */}
@@ -66,6 +132,11 @@ export default function Projects() {
                   className="group bg-surface/50 backdrop-blur-md rounded-lg p-6 border border-border/50 hover:border-primary/60 transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-lg content-slide-up"
                   style={{animationDelay: `${0.1 * index}s`}}
                 >
+                  {/* Video Demo */}
+                  {project.videoUrl && project.videoType && (
+                    <VideoEmbed videoUrl={project.videoUrl} videoType={project.videoType} />
+                  )}
+
                   {/* Project Header */}
                   <div className="mb-4">
                     <h3 className="text-xl font-space font-semibold text-primary mb-2 group-hover:text-gradient transition-all duration-300">

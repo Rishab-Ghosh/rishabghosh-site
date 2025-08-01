@@ -261,20 +261,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Fun fact */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 mr-20 bg-surface/20">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="bg-surface/50 backdrop-blur-md rounded-lg p-8 border border-border/50 max-w-2xl mx-auto shadow-sm content-slide-up">
-            <h3 className="text-2xl font-space font-bold text-gradient mb-4">
-              FUN FACT
-            </h3>
-            <p className="text-text/70 font-inter">
-              I once calculated the optimal betting strategy for a casino game using Python.
-              The casino wasn&apos;t happy, but my wallet was. 🎰
-            </p>
-          </div>
-        </div>
-      </section>
+
     </div>
   );
 } 
