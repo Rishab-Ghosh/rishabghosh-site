@@ -7,41 +7,41 @@ export default function Reviews() {
       poster: "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
       rating: 9,
       hotTake: "Nolan finally learned how to write dialogue. Also, Cillian Murphy's eyes should win an Oscar.",
-      longReview: "https://letterboxd.com/film/oppenheimer-2023/"
+      longReview: null
     },
     {
-      title: "Barbie",
+      title: "Columbus",
       poster: "https://image.tmdb.org/t/p/w500/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg",
-      rating: 8,
-      hotTake: "Funny, smart, and actually has something to say. Also, Ryan Gosling as Ken is pure chaos.",
+      rating: 7.5,
+      hotTake: "Excellent movie, and it particularly shines in its ability to take simple day-to-day insecurities and connect them to the romance between the two characters. Slightly bland with poor pacing.",
       longReview: null
     },
     {
-      title: "Killers of the Flower Moon",
+      title: "Chungking Express",
       poster: "https://image.tmdb.org/t/p/w500/aZXHjmhSSGUshLEdgsNCTH9sZ5L.jpg",
-      rating: 7,
-      hotTake: "Scorsese's longest movie yet, and somehow it still feels rushed. Great performances though.",
+      rating: 8.5,
+      hotTake: "Yes I watched a dubbed version of this movie. Sue me. Anyways some of the best cinematography i have ever seen. Wong Kar-Wai sadly never made a better movie before or after this, so this is truly his Magnum Opus",
       longReview: null
     },
     {
-      title: "Poor Things",
+      title: "The Truman Show",
       poster: "https://image.tmdb.org/t/p/w500/kCGlIMHnOm8JPXq3rXM6c5wMxcT.jpg",
       rating: 8,
-      hotTake: "Emma Stone is absolutely unhinged in the best way possible. This movie is pure chaos.",
+      hotTake: "The best part of the movie isn't the concept, the acting, or the filming itself. It's the experiential nature of the film, where you are Truman, and the story's canvas draws a direct connection to the audience. Jim Carrey managed to make a movie with everyday expressions throughout, huge.",
       longReview: null
     },
     {
-      title: "The Holdovers",
+      title: "Swades",
       poster: "https://image.tmdb.org/t/p/w500/6XN2ajxEw1LauJS39uDOjGEzQjL.jpg",
-      rating: 8,
-      hotTake: "A perfect Christmas movie that's not really about Christmas. Paul Giamatti is a national treasure.",
+      rating: 9.5,
+      hotTake: "My first Bollywood review. Most people think of Shah Rukh Khan, and this is not a passing thought in their minds as one of his notable works. However, portraying a character that completely departs from his cinematic mould, uncharming, moody, and frankly monotone, audiences for the first time see Khan the artist, not the actor. Truly hope bollywood would shive towards works like this, however, finances would never support that.",
       longReview: null
     },
     {
-      title: "Past Lives",
+      title: "The Curious Case of Benjamin Button",
       poster: "https://image.tmdb.org/t/p/w500/k3waqVXSnvCZWfJImtdZnGz4JdE.jpg",
-      rating: 9,
-      hotTake: "A beautiful meditation on love, timing, and the roads not taken. Made me cry in public.",
+      rating: 7.0,
+      hotTake: "This was a HARD rating. It's a movie I come back to every so often, and I think the more I reflect, the harder it is to claim that it is perfect. Yes, an inversion of the Forrest Gump life arc, the main struggle of the movie is maintaining a cohesive feel, the way, despite the years, we saw the world through Forrest's eyes. Nevertheless, Brad Pitt at his best, and will always be a personal favorite.",
       longReview: null
     }
   ];
@@ -67,6 +67,58 @@ export default function Reviews() {
               My hot takes on the latest films. Because apparently watching movies and having opinions 
               qualifies as content creation now.
             </p>
+          </div>
+
+          {/* Featured Movie */}
+          <div className="mb-16 content-slide-up">
+            <h2 className="text-3xl font-space font-bold text-gradient text-center mb-8">
+              FEATURED REVIEW
+            </h2>
+            <div className="bg-surface/50 backdrop-blur-md rounded-lg overflow-hidden border border-border/50 hover:border-primary/50 transition-all duration-300 shadow-lg hover:shadow-xl">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                {/* Featured Poster */}
+                <div className="relative h-80 lg:h-full overflow-hidden">
+                  <img 
+                    src="https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg"
+                    alt="Jerry Maguire"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-6 right-6 bg-background/90 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center">
+                    <span className="text-2xl font-space font-bold text-green-400">
+                      10
+                    </span>
+                  </div>
+                </div>
+
+                {/* Featured Content */}
+                <div className="p-8 flex flex-col justify-center">
+                  <div className="mb-4">
+                    <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-inter font-medium rounded-full mb-3">
+                      FEATURED
+                    </span>
+                    <h3 className="text-3xl font-space font-bold text-primary mb-4">
+                      Jerry Maguire
+                    </h3>
+                    <p className="text-text/70 font-inter text-lg leading-relaxed mb-6">
+                      Truly the best movie of all time. One cannot convince me otherwise.
+                    </p>
+                    <div className="flex items-center space-x-4">
+                      <a
+                        href="https://letterboxd.com/film/oppenheimer-2023/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white font-space font-semibold rounded-lg hover:scale-105 transition-all duration-200"
+                      >
+                        Read Full Review
+                        <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Reviews Grid */}
@@ -125,11 +177,10 @@ export default function Reviews() {
                 MORE REVIEWS COMING SOON
               </h3>
               <p className="text-text/70 font-inter mb-6">
-                I watch a lot of movies. Like, a concerning amount. Follow me on Letterboxd for more hot takes
-                and questionable opinions about cinema.
+                Recently told I should make a Letterboxd, well, not true; I have been told time and time again, but I never had the energy to do it. I will try to keep up with this one.
               </p>
               <a
-                href="https://letterboxd.com/rishabghosh"
+                href="https://letterboxd.com/Rishab_Ghoshh/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white font-space font-semibold rounded-lg hover:scale-105 transition-all duration-200"
