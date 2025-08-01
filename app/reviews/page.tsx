@@ -4,42 +4,42 @@ export default function Reviews() {
   const reviews = [
     {
       title: "Oppenheimer",
-      poster: "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+      poster: "/images/oppenheimer.jpg",
       rating: 9,
       hotTake: "Nolan finally learned how to write dialogue. Also, Cillian Murphy's eyes should win an Oscar.",
       longReview: null
     },
     {
       title: "Columbus",
-      poster: "https://image.tmdb.org/t/p/w500/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg",
+      poster: "/images/columbus.jpg",
       rating: 7.5,
       hotTake: "Excellent movie, and it particularly shines in its ability to take simple day-to-day insecurities and connect them to the romance between the two characters. Slightly bland with poor pacing.",
       longReview: null
     },
     {
       title: "Chungking Express",
-      poster: "https://image.tmdb.org/t/p/w500/aZXHjmhSSGUshLEdgsNCTH9sZ5L.jpg",
+      poster: "/images/chungking_express.jpg",
       rating: 8.5,
       hotTake: "Yes I watched a dubbed version of this movie. Sue me. Anyways some of the best cinematography i have ever seen. Wong Kar-Wai sadly never made a better movie before or after this, so this is truly his Magnum Opus",
       longReview: null
     },
     {
       title: "The Truman Show",
-      poster: "https://image.tmdb.org/t/p/w500/kCGlIMHnOm8JPXq3rXM6c5wMxcT.jpg",
+      poster: "/images/truman_show.jpg",
       rating: 8,
       hotTake: "The best part of the movie isn't the concept, the acting, or the filming itself. It's the experiential nature of the film, where you are Truman, and the story's canvas draws a direct connection to the audience. Jim Carrey managed to make a movie with everyday expressions throughout, huge.",
       longReview: null
     },
     {
       title: "Swades",
-      poster: "https://image.tmdb.org/t/p/w500/6XN2ajxEw1LauJS39uDOjGEzQjL.jpg",
+      poster: "/images/swades.jpg",
       rating: 9.5,
       hotTake: "My first Bollywood review. Most people think of Shah Rukh Khan, and this is not a passing thought in their minds as one of his notable works. However, portraying a character that completely departs from his cinematic mould, uncharming, moody, and frankly monotone, audiences for the first time see Khan the artist, not the actor. Truly hope bollywood would shive towards works like this, however, finances would never support that.",
       longReview: null
     },
     {
       title: "The Curious Case of Benjamin Button",
-      poster: "https://image.tmdb.org/t/p/w500/k3waqVXSnvCZWfJImtdZnGz4JdE.jpg",
+      poster: "/images/benjamin_button.jpg",
       rating: 7.0,
       hotTake: "This was a HARD rating. It's a movie I come back to every so often, and I think the more I reflect, the harder it is to claim that it is perfect. Yes, an inversion of the Forrest Gump life arc, the main struggle of the movie is maintaining a cohesive feel, the way, despite the years, we saw the world through Forrest's eyes. Nevertheless, Brad Pitt at his best, and will always be a personal favorite.",
       longReview: null
@@ -79,7 +79,7 @@ export default function Reviews() {
                 {/* Featured Poster */}
                 <div className="relative h-80 lg:h-full overflow-hidden">
                   <img 
-                    src="https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg"
+                    src="/images/jerry_maguire.jpg"
                     alt="Jerry Maguire"
                     className="w-full h-full object-cover"
                   />
