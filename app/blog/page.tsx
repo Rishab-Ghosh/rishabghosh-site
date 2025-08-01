@@ -1,75 +1,122 @@
 'use client';
 
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 export default function Blog() {
+  const [showPopup, setShowPopup] = useState(false);
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    // Show popup after 2 seconds
+    const timer = setTimeout(() => {
+      setShowPopup(true);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setShowPopup(false);
+        setEmail('');
+        // You could add a success toast here
+        console.log('Successfully subscribed:', email);
+      } else {
+        console.error('Subscription failed:', data.error);
+        // You could add an error toast here
+      }
+    } catch (error) {
+      console.error('Subscription error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const blogPosts = [
     {
       id: "1",
-      title: "Why I Built a Volatility Surface Dashboard",
-      excerpt: "A deep dive into the world of options pricing and why visualizing volatility surfaces matters for quantitative finance. Plus, some thoughts on why most traders are doing it wrong.",
-      date: "2024-01-15",
-      readTime: "8 min read",
-      category: "Quantitative Finance",
-      tags: ["Options", "Volatility", "Python", "Finance"],
+      title: "Blogs Coming Soon",
+      excerpt: "I'm working on some interesting content about quantitative finance, poker strategy, venture capital, and building cool stuff. Stay tuned for deep dives into the topics that fascinate me.",
+      date: "Coming Soon",
+      readTime: "Various",
+      category: "Coming Soon",
+      tags: ["Finance", "Poker", "VC", "Projects"],
       featured: true
     },
     {
       id: "2", 
-      title: "The Math Behind Card Counting (And Why Casinos Hate It)",
-      excerpt: "Exploring the probability theory that makes card counting work, why it's not actually illegal, and how I built a training app to practice. The house doesn't always win if you know the numbers.",
-      date: "2024-01-10",
-      readTime: "12 min read",
-      category: "Mathematics",
-      tags: ["Probability", "Blackjack", "Statistics", "Gaming"],
-      featured: false
-    },
-    {
-      id: "3",
-      title: "Venture Capital: Where PowerPoint Meets Reality",
-      excerpt: "My summer internship at Arbor Ventures taught me that most startups are just fancy presentations until they're not. Here's what I learned about separating hype from substance.",
-      date: "2024-01-05",
-      readTime: "6 min read",
-      category: "Venture Capital",
-      tags: ["VC", "Startups", "Investing", "Internship"],
-      featured: false
-    },
-    {
-      id: "4",
-      title: "Building a Portfolio Optimizer: Modern Portfolio Theory in Practice",
-      excerpt: "How I implemented Harry Markowitz's Modern Portfolio Theory to create a tool that actually helps with investment decisions. Because diversification is just fancy talk for not putting all your eggs in one basket.",
-      date: "2023-12-28",
-      readTime: "10 min read",
-      category: "Portfolio Management",
-      tags: ["MPT", "Diversification", "Risk", "Python"],
-      featured: false
-    },
-    {
-      id: "5",
-      title: "The Psychology of Poker: Why Math Alone Isn't Enough",
-      excerpt: "Poker isn't just about calculating pot odds. It's about reading people, managing tilt, and understanding game theory. Here's what I've learned from thousands of hands.",
-      date: "2023-12-20",
-      readTime: "15 min read",
-      category: "Psychology",
-      tags: ["Poker", "Psychology", "Game Theory", "Decision Making"],
-      featured: false
-    },
-    {
-      id: "6",
-      title: "From Math Academy to McCombs: My Journey into Finance",
-      excerpt: "How a background in advanced mathematics prepared me for quantitative finance, and why I chose to study business instead of pure math. The story behind the quant.",
-      date: "2023-12-15",
-      readTime: "7 min read",
-      category: "Personal",
-      tags: ["Education", "Mathematics", "Finance", "Career"],
+      title: "More Posts Will Show Up Here!",
+      excerpt: "Sign up for email updates to stay tuned when I publish new content. I'll be sharing thoughts on markets, projects, and whatever else I'm thinking about.",
+      date: "Coming Soon",
+      readTime: "Various",
+      category: "Coming Soon",
+      tags: ["Updates", "Email", "Content"],
       featured: false
     }
   ];
 
-  const categories = ["All", "Quantitative Finance", "Mathematics", "Venture Capital", "Portfolio Management", "Psychology", "Personal"];
+  const categories = ["All", "Coming Soon"];
 
   return (
     <div className="min-h-screen bg-gradient-mesh">
+      {/* Email Signup Popup */}
+      {showPopup && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-surface/95 backdrop-blur-md rounded-lg p-8 border border-border/50 max-w-md w-full shadow-xl animate-in slide-in-from-bottom-4 duration-300">
+            <div className="text-center">
+              <h3 className="text-2xl font-space font-bold text-gradient mb-4">
+                Stay Updated!
+              </h3>
+              <p className="text-text/70 font-inter mb-6 leading-relaxed">
+                Hey there! I currently haven&apos;t written anything, and if I have either way you should sign up to get email updates whenever a new blog drops. I&apos;ll take movies, finance, markets, projects and perhaps life updates if that&apos;s what people are into.
+              </p>
+              
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="your.email@example.com"
+                  required
+                  className="w-full px-4 py-3 bg-background border border-border/50 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text placeholder-text/40 font-inter"
+                />
+                <div className="flex gap-3">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="flex-1 px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white font-space font-semibold rounded-lg hover:scale-105 transition-all duration-200 disabled:opacity-50"
+                  >
+                    {isSubmitting ? 'Signing up...' : 'Sign Up'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setShowPopup(false)}
+                    className="px-6 py-3 bg-surface/50 border border-border/50 text-text/70 font-inter font-medium rounded-lg hover:border-primary/40 hover:text-primary transition-all duration-200"
+                  >
+                    Maybe Later
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="py-20 px-4 sm:px-6 lg:px-8 mr-20">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
@@ -78,8 +125,7 @@ export default function Blog() {
               BLOG
             </h1>
             <p className="text-xl font-inter text-text/60 max-w-3xl mx-auto leading-relaxed">
-              Thoughts on quantitative finance, venture capital, poker strategy, and building cool stuff. 
-              Because apparently I have opinions and I&apos;m not afraid to share them.
+              I have opinions and I&apos;m not afraid to share them.
             </p>
           </div>
 

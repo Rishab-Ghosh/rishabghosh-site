@@ -13,9 +13,9 @@ export default function Creative() {
       embedUrl: "https://www.youtube.com/embed/wA_JilabjCw"
     },
     {
-      title: "Building a Volatility Dashboard",
-      description: "How I built an interactive dashboard for analyzing volatility surfaces. Because staring at numbers all day isn't enough, I need pretty graphs too.",
-      embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      title: "Chungking Express x White Ferrari Cinematic Edit",
+      description: "Watched the movie and was awed, and was going through my depressive Frank Ocean phase, so immediately had a surge of inspiration.",
+      embedUrl: "https://www.youtube.com/embed/dZjFgnVpBdM"
     }
   ];
 
@@ -144,24 +144,7 @@ export default function Creative() {
             </div>
           </div>
 
-          {/* Call to Action */}
-          <div className="text-center content-slide-up">
-            <div className="bg-surface/50 backdrop-blur-md rounded-lg p-8 border border-border/50 max-w-2xl mx-auto">
-              <h3 className="text-2xl font-space font-bold text-gradient mb-4">
-                WANT TO COLLABORATE?
-              </h3>
-              <p className="text-text/70 font-inter mb-6 max-w-2xl mx-auto">
-                I&apos;m always open to creative collaborations, podcast appearances, or just chatting about
-                quant finance, startups, or poker strategy. Hit me up!
-              </p>
-              <a
-                href="/contact"
-                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white font-space font-semibold rounded-lg hover:scale-105 transition-all duration-200"
-              >
-                Get In Touch
-              </a>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
