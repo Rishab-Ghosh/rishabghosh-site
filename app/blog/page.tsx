@@ -52,7 +52,7 @@ export default function Blog() {
     {
       id: "1",
       title: "Blogs Coming Soon",
-      excerpt: "I'm working on some interesting content about quantitative finance, poker strategy, venture capital, and building cool stuff. Stay tuned for deep dives into the topics that fascinate me.",
+      excerpt: "I'm working on some interesting content about finance, poker strategy, venture capital, and building cool stuff. Stay tuned for deep dives into the topics that fascinate me.",
       date: "Coming Soon",
       readTime: "Various",
       category: "Coming Soon",
@@ -258,7 +258,7 @@ export default function Blog() {
                 GET UPDATES
               </h3>
               <p className="text-text/70 font-inter mb-6">
-                Subscribe to get notified when I publish new posts about quant finance,
+                Subscribe to get notified when I publish new posts about finance,
                 poker strategy, or whatever else I&apos;m thinking about.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
