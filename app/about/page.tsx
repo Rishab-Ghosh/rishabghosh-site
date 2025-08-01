@@ -1,19 +1,30 @@
 'use client';
 
 export default function About() {
-  const timeline = [
+    const timeline = [
     {
-      year: "2024",
-      title: "McCombs School of Business",
-      description: "Currently pursuing my degree in Business while diving deep into quantitative finance and venture capital. Because apparently I need a piece of paper to prove I know what I'm doing.",
-      emoji: "🎓"
+      year: "May 2025 - August 2025",
+      title: "Repsol: Risk Management and Options Trading",
+      description: "Built pivot-based frameworks in Python for curve comparison, anomaly detection, and vol spike diagnostics to support risk and trading decisions.",
+      emoji: "⚡"
     },
     {
-      year: "Early 2023",
-      title: "Americanomics",
-      description: "This was my first self-published book. This was an elementary attempt at addressing an issue I found within the community, and have since done better.",
-      emoji: "📖",
-      link: "https://www.amazon.com/Americanomics-Basics-Our-Country-Economy/dp/B0CDNFCZSD"
+      year: "July 2025- Present",
+      title: "Building JackSharp",
+      description: "First App with training modules for GTO, ICM, Blockers, and Blackjack basic strategy",
+      emoji: "🃏"
+    },
+    {
+      year: "September 2024-Present",
+      title: "Sustainability Investment Group (SIG)",
+      description: "Conducted fundamental and ESG-focused equity research to inform portfolio decisions on a ~$12K student-managed public fund.",
+      emoji: "🌱"
+    },
+    {
+      year: "August 2024 - Present",
+      title: "University of Texas at Austin",
+      description: "Pursuing a degree in Finance, studying anything and everything in between along the way.",
+      emoji: "🎓"
     },
     {
       year: "June 2023-May 2024",
@@ -36,31 +47,33 @@ export default function About() {
       ]
     },
     {
-      year: "2023",
-      title: "Arbor Ventures Internship",
-      description: "Spent the summer analyzing startups and learning that most pitch decks are just fancy PowerPoint presentations. But hey, some of them actually work.",
-      emoji: "💼"
-    },
-    {
-      year: "2022",
-      title: "First Quant Project",
-      description: "Built my first volatility surface dashboard. Because staring at numbers all day wasn't enough, I needed pretty graphs too.",
-      emoji: "📊"
+      year: "Early 2023",
+      title: "Americanomics",
+      description: "This was my first self-published book. This was an elementary attempt at addressing an issue I found within the community, and have since done better.",
+      emoji: "📖",
+      subItems: [
+        {
+          title: "Americanomics: The Basics of Our Country's Economy",
+          link: "https://www.amazon.com/Americanomics-Basics-Our-Country-Economy/dp/B0CDNFCZSD",
+          image: "/images/americanomics-cover.jpg",
+          source: "Amazon"
+        }
+      ]
     }
   ];
 
   const skills = [
     {
-      category: "Quantitative Finance",
-      items: ["Options Pricing", "Volatility Modeling", "Portfolio Optimization", "Risk Management", "Python", "R"]
+      category: "Finance",
+      items: ["Building DCF models", "Options Pricing", "LBO Modeling", "Building bottoms-up models", "Market Sizing: TAM/SAM/SOM", "Forecasting financials"]
     },
     {
       category: "Technology",
-      items: ["Next.js", "React", "TypeScript", "Python", "SQL", "Git", "AWS", "Docker"]
+      items: ["Python", "Swift", "SwiftUI", "Streamlit", "React", "Tailwind CSS", "Plotly", "Pandas", "NumPy", "Firebase"]
     },
     {
       category: "Other Skills",
-      items: ["Poker Strategy", "Card Counting", "Startup Analysis", "Data Visualization", "Public Speaking"]
+      items: ["DJ (in training)", "Building keyboards", "5:30 mile (at some point in time)"]
     }
   ];
 
@@ -161,18 +174,7 @@ export default function About() {
                   <div className="flex-1 bg-surface/50 backdrop-blur-md rounded-lg p-6 border border-border/50 hover:border-primary/40 transition-all duration-300 shadow-sm">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-xl font-space font-semibold text-primary">
-                        {item.link ? (
-                          <a 
-                            href={item.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:text-primary/80 transition-colors duration-200"
-                          >
-                            {item.title}
-                          </a>
-                        ) : (
-                          item.title
-                        )}
+                        {item.title}
                       </h3>
                       <span className="text-sm font-inter text-text/60 bg-accent/20 px-3 py-1 rounded-full">
                         {item.year}

@@ -45,7 +45,7 @@ export default function Home() {
 
             {/* Bio */}
             <p className="text-lg font-inter text-text/70 max-w-3xl mx-auto mb-12 leading-relaxed">
-            I&apos;m currently at the University of Texas at Austin McCombs School of Business, studying Finance. I care particularly about sustainability, the start-up scene, and testing how much I can learn through a series of infinite side quests. 
+            I&apos;m currently attending the University of Texas at Austin&apos;s McCombs School of Business, where I am studying Finance. My passions, both academically and professionally, lie in bridging technical modeling with capital market insights.
             </p>
 
             {/* CTA Buttons */}
