@@ -51,16 +51,8 @@ export default function Home() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
               <Link
-                href="/resume.pdf"
-                target="_blank"
-                className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-space font-semibold rounded-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-primary/25"
-              >
-                View Resume
-              </Link>
-              
-              <Link
                 href="/projects"
-                className="px-8 py-4 bg-surface/50 backdrop-blur-md border border-border/50 text-text font-space font-semibold rounded-lg hover:bg-surface/80 hover:border-primary/50 transition-all duration-300"
+                className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-space font-semibold rounded-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-primary/25"
               >
                 See My Work
               </Link>
