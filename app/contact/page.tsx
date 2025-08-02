@@ -1,51 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState('');
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitMessage('');
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setSubmitMessage('✅ Message sent successfully! I\'ll get back to you soon.');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        setSubmitMessage(`❌ ${data.error || 'Failed to send message'}`);
-      }
-    } catch (error) {
-      setSubmitMessage('❌ Failed to send message. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
   const socialLinks = [
     {
       name: "GitHub",
@@ -158,7 +113,7 @@ export default function Contact() {
               SEND A MESSAGE
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-inter font-medium text-text/70 mb-2">
@@ -168,9 +123,6 @@ export default function Contact() {
                     type="text"
                     id="name"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
                     className="w-full px-4 py-3 bg-background border border-border/50 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text placeholder-text/40 font-inter"
                     placeholder="Your name"
                   />
@@ -184,9 +136,6 @@ export default function Contact() {
                     type="email"
                     id="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
                     className="w-full px-4 py-3 bg-background border border-border/50 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text placeholder-text/40 font-inter"
                     placeholder="your.email@example.com"
                   />
@@ -200,32 +149,18 @@ export default function Contact() {
                 <textarea
                   id="message"
                   name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
                   rows={6}
                   className="w-full px-4 py-3 bg-background border border-border/50 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text placeholder-text/40 font-inter resize-none"
                   placeholder="What's on your mind?"
                 ></textarea>
               </div>
 
-              {submitMessage && (
-                <div className={`p-4 rounded-lg text-center ${
-                  submitMessage.includes('✅') 
-                    ? 'bg-green-500/10 border border-green-500/20 text-green-400' 
-                    : 'bg-red-500/10 border border-red-500/20 text-red-400'
-                }`}>
-                  {submitMessage}
-                </div>
-              )}
-
               <div className="text-center">
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white font-space font-semibold rounded-lg hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white font-space font-semibold rounded-lg hover:scale-105 transition-all duration-200"
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  Send Message
                 </button>
               </div>
             </form>
