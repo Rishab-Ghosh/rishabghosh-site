@@ -64,7 +64,7 @@ export default function Home() {
                 href="https://github.com/Rishab-Ghosh"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-14 h-14 glass-effect rounded-2xl flex items-center justify-center text-text/60 hover:text-primary hover:shadow-lg transition-all duration-500 hover:scale-110 hover:rotate-3"
+                className="w-14 h-14 glass-effect rounded-2xl flex items-center justify-center text-text/60 hover:text-primary hover:shadow-glow-pink transition-all duration-500 hover:scale-110 hover:rotate-3"
                 aria-label="GitHub"
               >
                 <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
@@ -76,7 +76,7 @@ export default function Home() {
                 href="https://www.linkedin.com/in/rishabghosh"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-14 h-14 glass-effect rounded-2xl flex items-center justify-center text-text/60 hover:text-primary hover:shadow-lg transition-all duration-500 hover:scale-110 hover:-rotate-3"
+                className="w-14 h-14 glass-effect rounded-2xl flex items-center justify-center text-text/60 hover:text-primary hover:shadow-glow-cyan transition-all duration-500 hover:scale-110 hover:-rotate-3"
                 aria-label="LinkedIn"
               >
                 <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
@@ -89,7 +89,7 @@ export default function Home() {
       </section>
 
       {/* Quick Links Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 mr-20 bg-surface/20">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 mr-20 bg-gradient-glow">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Reviews Card */}
