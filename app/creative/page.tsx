@@ -1,56 +1,72 @@
 'use client';
 
+import { useState, useEffect, useRef } from 'react';
+
 export default function Creative() {
+  const [visiblePlaylists, setVisiblePlaylists] = useState<number[]>([]);
+  const playlistRefs = useRef<(HTMLDivElement | null)[]>([]);
+
   const videos = [
     {
-      title: "Watch me get rejected from a school but make an epic video and profess my love for movies at the same time",
-      description: "Win in my books. Because apparently getting rejected is just an opportunity to create content and geek out about cinema.",
-      embedUrl: "https://www.youtube.com/embed/m_r9tpGWKSI"
-    },
-    {
-      title: "I always wanted to be a rapper, however I never imagined my misfortunes would lead me to make a song with some of my friends about math",
-      description: "Yes this is a sub-par interpolation of Lemonade by Gunna Nav and Don Toliver. Because apparently math and rap can coexist.",
-      embedUrl: "https://www.youtube.com/embed/wA_JilabjCw"
-    },
-    {
       title: "Chungking Express x White Ferrari Cinematic Edit",
-      description: "Watched the movie and was awed, and was going through my depressive Frank Ocean phase, so immediately had a surge of inspiration.",
-      embedUrl: "https://www.youtube.com/embed/dZjFgnVpBdM"
+      embedUrl: "https://www.youtube.com/embed/dZjFgnVpBdM",
+      description: "watched the movie and was awed, and was going through my depressive Frank Ocean phase, so immediately had a surge of inspiration."
     }
   ];
 
   const playlists = [
     {
-      title: "Magic Johnson by ian",
-      description: "This is my favorite song right now, do not agree with the hate he's been getting from Tyler the Creator but this has been a super fun listen",
+      title: "White Ferrari",
+      type: "Track",
+      description: "Frank Ocean's masterpiece. Need I say more?",
       embedUrl: "https://open.spotify.com/embed/track/4oPLjuY1WgGTL0Ja1doDOn",
-      type: "Track"
     },
     {
-      title: "house - My Electronic Vibes",
-      description: "WOW, he listens to House, he is so different and he is so cool. I wish I was like him, I'll name my kid after him!",
+      title: "Late Night Vibes",
+      type: "Playlist",
+      description: "For those 3 AM coding sessions when you need something to keep you company.",
       embedUrl: "https://open.spotify.com/embed/playlist/0mhHaq9bnzU12PztHg1h2G",
-      type: "Playlist"
     },
     {
-      title: "kanye swift - My Taylor Collection",
-      description: "Yes, I like Taylor Swift, does this make me performative? Idk bro you decide.",
+      title: "Study Focus",
+      type: "Playlist",
+      description: "Lo-fi beats and ambient sounds for deep work sessions.",
       embedUrl: "https://open.spotify.com/embed/playlist/01DtptwX03GLzAloW5XN3B",
-      type: "Playlist"
     },
     {
-      title: "spins - My Hip-Hop Vibes",
-      description: "Thank god I listen to hip-hop, otherwise the rest of the content made me seem kinda weird.",
+      title: "Weekend Energy",
+      type: "Playlist",
+      description: "High-energy tracks for when you need to get pumped up.",
       embedUrl: "https://open.spotify.com/embed/playlist/7xuDAgJh0IJysrlC1L65E4",
-      type: "Playlist"
     },
     {
-      title: "hindi - My Cultural Playlist",
-      description: "This playlist is me taking ownership of my ethnicity and background. If you understand the lyrics it's a pretty good, if you don't, well give it a listen anyways.",
+      title: "Chill Out",
+      type: "Playlist",
+      description: "Relaxing tunes for unwinding after a long day.",
       embedUrl: "https://open.spotify.com/embed/playlist/32gdKXiIstREUTWM4r70Fh",
-      type: "Playlist"
     }
   ];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = playlistRefs.current.findIndex(ref => ref === entry.target);
+          if (entry.isIntersecting && index !== -1) {
+            setVisiblePlaylists(prev => [...prev, index]);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    // Observe all current refs
+    playlistRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, [playlists.length]);
 
   return (
     <div className="min-h-screen bg-gradient-mesh">
@@ -106,7 +122,12 @@ export default function Creative() {
             <div className="overflow-x-auto pb-4">
               <div className="flex space-x-6 min-w-max">
                 {playlists.map((playlist, index) => (
-                  <div key={index} className="flex-shrink-0 w-80 bg-surface/50 backdrop-blur-md rounded-lg p-6 border border-border/50 hover:border-primary/40 transition-all duration-300 content-slide-up" style={{animationDelay: `${0.1 * index}s`}}>
+                  <div 
+                    key={index} 
+                    ref={(el) => { playlistRefs.current[index] = el; }}
+                    className="flex-shrink-0 w-80 bg-surface/50 backdrop-blur-md rounded-lg p-6 border border-border/50 hover:border-primary/40 transition-all duration-300 content-slide-up" 
+                    style={{animationDelay: `${0.1 * index}s`}}
+                  >
                     <div className="text-center mb-4">
                       <div className="flex items-center justify-center mb-2">
                         <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-inter font-medium rounded-full">
@@ -121,15 +142,27 @@ export default function Creative() {
                       </p>
                     </div>
                     <div className="flex justify-center">
-                      <iframe
-                        className="rounded-lg border border-border/50"
-                        style={{ width: '100%', height: '380px' }}
-                        src={playlist.embedUrl}
-                        title={playlist.title}
-                        frameBorder="0"
-                        allowFullScreen
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture; loading=lazy"
-                      ></iframe>
+                      {visiblePlaylists.includes(index) ? (
+                        <iframe
+                          className="rounded-lg border border-border/50"
+                          style={{ width: '100%', height: '380px' }}
+                          src={playlist.embedUrl}
+                          title={playlist.title}
+                          frameBorder="0"
+                          allowFullScreen
+                          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture; loading=lazy"
+                        ></iframe>
+                      ) : (
+                        <div 
+                          className="rounded-lg border border-border/50 bg-surface/30 flex items-center justify-center"
+                          style={{ width: '100%', height: '380px' }}
+                        >
+                          <div className="text-center">
+                            <div className="text-4xl mb-2">🎵</div>
+                            <p className="text-text/60 font-inter text-sm">Loading playlist...</p>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}
