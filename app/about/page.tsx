@@ -1,7 +1,7 @@
 'use client';
 
 export default function About() {
-  const timeline = [
+    const timeline = [
     {
       year: "May 2025 - August 2025",
       title: "Repsol: Risk Management and Options Trading",
