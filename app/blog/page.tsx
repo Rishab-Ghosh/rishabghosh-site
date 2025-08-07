@@ -61,28 +61,30 @@ export default function Blog() {
       externalUrl: "https://medium.com/@rishabghosh_96234/bayesian-decision-making-in-poker-a-simulation-based-study-b53744288df4"
     },
     {
-      id: "article-2",
-      title: "More Articles Coming Soon",
-      excerpt: "I have more articles in the pipeline covering topics like finance, technology, and strategy. Stay tuned for more deep dives into the topics that fascinate me.",
-      date: "Coming Soon",
-      readTime: "Various",
-      category: "Coming Soon",
-      tags: ["Finance", "Technology", "Strategy"],
-      featured: false
+      id: "batman-problem",
+      title: "The Batman Problem",
+      excerpt: "An exploration of decision-making frameworks and strategic thinking through the lens of Batman's approach to complex problems. How do we apply systematic thinking to real-world challenges?",
+      date: "2024-02-20",
+      readTime: "6 min read",
+      category: "Strategy",
+      tags: ["Strategy", "Decision Making", "Problem Solving", "Analysis"],
+      featured: false,
+      externalUrl: "https://medium.com/@rishabghosh_96234/the-batman-problem-9b09f5d0efff"
     },
     {
-      id: "article-3",
-      title: "Even More Content on the Way",
-      excerpt: "Sign up for email updates to stay tuned when I publish new content. I'll be sharing thoughts on markets, projects, and whatever else I'm thinking about.",
-      date: "Coming Soon",
-      readTime: "Various",
-      category: "Coming Soon",
-      tags: ["Updates", "Email", "Content"],
-      featured: false
+      id: "ai-saas-tool",
+      title: "Launching My New AI B2B SaaS Tool",
+      excerpt: "A deep dive into building and launching an AI-powered B2B SaaS solution. From ideation to market launch, exploring the challenges and insights gained from building in the AI space.",
+      date: "2024-03-10",
+      readTime: "7 min read",
+      category: "Technology",
+      tags: ["AI", "SaaS", "Startup", "Technology", "B2B"],
+      featured: false,
+      externalUrl: "https://medium.com/@rishabghosh_96234/launching-my-new-ai-b2b-saas-tool-6ae1916c26fc"
     }
   ];
 
-  const categories = ["All", "Poker Strategy", "Coming Soon"];
+  const categories = ["All", "Poker Strategy", "Strategy", "Technology", "Coming Soon"];
 
   return (
     <div className="min-h-screen bg-gradient-mesh">
