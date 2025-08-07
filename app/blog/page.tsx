@@ -50,18 +50,29 @@ export default function Blog() {
 
   const blogPosts = [
     {
-      id: "1",
-      title: "Blogs Coming Soon",
-      excerpt: "I'm working on some interesting content about finance, poker strategy, venture capital, and building cool stuff. Stay tuned for deep dives into the topics that fascinate me.",
+      id: "bayesian-poker",
+      title: "Bayesian Decision Making in Poker: A Simulation-Based Study",
+      excerpt: "Exploring how Bayesian probability theory can be applied to poker decision-making through computational simulations. This study examines the effectiveness of Bayesian reasoning in improving poker strategy and decision-making under uncertainty.",
+      date: "2024-01-15",
+      readTime: "8 min read",
+      category: "Poker Strategy",
+      tags: ["Poker", "Bayesian", "Statistics", "Decision Making"],
+      featured: true,
+      externalUrl: "https://medium.com/@rishabghosh_96234/bayesian-decision-making-in-poker-a-simulation-based-study-b53744288df4"
+    },
+    {
+      id: "article-2",
+      title: "More Articles Coming Soon",
+      excerpt: "I have more articles in the pipeline covering topics like finance, technology, and strategy. Stay tuned for more deep dives into the topics that fascinate me.",
       date: "Coming Soon",
       readTime: "Various",
       category: "Coming Soon",
-      tags: ["Finance", "Poker", "VC", "Projects"],
-      featured: true
+      tags: ["Finance", "Technology", "Strategy"],
+      featured: false
     },
     {
-      id: "2", 
-      title: "More Posts Will Show Up Here!",
+      id: "article-3",
+      title: "Even More Content on the Way",
       excerpt: "Sign up for email updates to stay tuned when I publish new content. I'll be sharing thoughts on markets, projects, and whatever else I'm thinking about.",
       date: "Coming Soon",
       readTime: "Various",
@@ -71,7 +82,7 @@ export default function Blog() {
     }
   ];
 
-  const categories = ["All", "Coming Soon"];
+  const categories = ["All", "Poker Strategy", "Coming Soon"];
 
   return (
     <div className="min-h-screen bg-gradient-mesh">
@@ -168,15 +179,29 @@ export default function Blog() {
                   ))}
                 </div>
 
-                <Link
-                  href={`/blog/${post.id}`}
-                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white font-space font-semibold rounded-lg hover:scale-105 transition-all duration-200"
-                >
-                  Read Full Post
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
+                {post.externalUrl ? (
+                  <a
+                    href={post.externalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white font-space font-semibold rounded-lg hover:scale-105 transition-all duration-200"
+                  >
+                    Read on Medium
+                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                ) : (
+                  <Link
+                    href={`/blog/${post.id}`}
+                    className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white font-space font-semibold rounded-lg hover:scale-105 transition-all duration-200"
+                  >
+                    Read Full Post
+                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                )}
               </div>
             </div>
           ))}
@@ -240,12 +265,23 @@ export default function Blog() {
                     })}
                   </span>
 
-                  <Link
-                    href={`/blog/${post.id}`}
-                    className="text-primary font-inter font-medium text-sm hover:text-primary/80 transition-colors duration-200"
-                  >
-                    Read More →
-                  </Link>
+                  {post.externalUrl ? (
+                    <a
+                      href={post.externalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary font-inter font-medium text-sm hover:text-primary/80 transition-colors duration-200"
+                    >
+                      Read on Medium →
+                    </a>
+                  ) : (
+                    <Link
+                      href={`/blog/${post.id}`}
+                      className="text-primary font-inter font-medium text-sm hover:text-primary/80 transition-colors duration-200"
+                    >
+                      Read More →
+                    </Link>
+                  )}
                 </div>
               </article>
             ))}
