@@ -20,7 +20,6 @@ export default function NotFound() {
         alignItems: 'center',
         justifyContent: 'center',
         padding: '24px',
-        marginRight: '80px',
       }}
     >
       <div style={{ textAlign: 'center' }}>

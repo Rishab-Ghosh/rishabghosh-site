@@ -76,7 +76,7 @@ const comingSoon = [
 
 export default function Projects() {
   return (
-    <div className="pixel-grid-bg" style={{ minHeight: '100vh', marginRight: '80px', padding: '48px 24px 60px' }}>
+    <div className="pixel-grid-bg" style={{ minHeight: '100vh', padding: '48px 24px 60px' }}>
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
 
         {/* Page header */}

@@ -406,3 +406,44 @@ input::placeholder, textarea::placeholder {
 *, *::before, *::after {
   border-radius: 0 !important;
 }
+
+/* ── Responsive page wrapper ─────────────────────────────────────────────── */
+/* Desktop: leave room for the right-side navbar */
+.page-content {
+  margin-right: 80px;
+}
+/* Mobile: no right margin, add bottom padding for bottom nav */
+@media (max-width: 767px) {
+  .page-content {
+    margin-right: 0 !important;
+    padding-bottom: 68px !important;
+  }
+  /* Hide desktop right nav on mobile */
+  .desktop-nav {
+    display: none !important;
+  }
+  /* Hide mobile nav on desktop */
+  .mobile-nav {
+    display: flex !important;
+  }
+}
+@media (min-width: 768px) {
+  .mobile-nav {
+    display: none !important;
+  }
+  .desktop-nav {
+    display: flex !important;
+  }
+}
+
+/* ── Mobile typography helpers ───────────────────────────────────────────── */
+@media (max-width: 767px) {
+  /* Make iframes not overflow */
+  iframe {
+    max-width: 100%;
+  }
+  /* Featured review grid: stack on mobile */
+  .featured-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

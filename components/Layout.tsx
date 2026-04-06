@@ -21,7 +21,7 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <div className="min-h-screen flex pixel-grid-bg">
-      <div className="flex-1 flex flex-col" style={{ minWidth: 0 }}>
+      <div className="flex-1 flex flex-col page-content" style={{ minWidth: 0 }}>
         <main
           style={{
             flexGrow: 1,

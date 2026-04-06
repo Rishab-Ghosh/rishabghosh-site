@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import IntroExperience from '@/components/IntroExperience';
 
 const S = {
   btn: (color: string, filled = false) => ({
@@ -29,17 +30,31 @@ const quickLinks = [
 export default function Home() {
   const [show, setShow]           = useState(false);
   const [pressStart, setPressStart] = useState(false);
+  const [showIntro, setShowIntro] = useState(false);
 
   useEffect(() => {
-    const t1 = setTimeout(() => setShow(true), 150);
-    const t2 = setTimeout(() => setPressStart(true), 900);
-    return () => { clearTimeout(t1); clearTimeout(t2); };
+    const seen = localStorage.getItem('hasSeenIntro');
+    if (!seen) {
+      setShowIntro(true);
+    } else {
+      const t1 = setTimeout(() => setShow(true), 150);
+      const t2 = setTimeout(() => setPressStart(true), 900);
+      return () => { clearTimeout(t1); clearTimeout(t2); };
+    }
   }, []);
 
+  const handleIntroComplete = () => {
+    setShowIntro(false);
+    setTimeout(() => setShow(true), 200);
+    setTimeout(() => setPressStart(true), 1000);
+  };
+
   return (
+    <>
+      {showIntro && <IntroExperience onComplete={handleIntroComplete} />}
     <div
       className="pixel-grid-bg"
-      style={{ minHeight: '100vh', padding: '40px 24px 60px', marginRight: '80px' }}
+      style={{ minHeight: '100vh', padding: '40px 24px 60px' }}
     >
       <div style={{ maxWidth: '860px', margin: '0 auto' }}>
 
@@ -204,6 +219,7 @@ export default function Home() {
         )}
       </div>
     </div>
+    </>
   );
 }
 

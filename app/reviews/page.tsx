@@ -28,7 +28,7 @@ const ratingLabel = (r: number) => {
 
 export default function Reviews() {
   return (
-    <div className="pixel-grid-bg" style={{ minHeight: '100vh', marginRight: '80px', padding: '48px 24px 60px' }}>
+    <div className="pixel-grid-bg" style={{ minHeight: '100vh', padding: '48px 24px 60px' }}>
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
 
         {/* Header */}
@@ -58,7 +58,7 @@ export default function Reviews() {
         {/* Featured review */}
         <div style={{ marginBottom: '44px' }}>
           <SectionLabel label="FEATURED REVIEW" color="var(--px-amber)" />
-          <div style={{
+          <div className="featured-grid" style={{
             display: 'grid',
             gridTemplateColumns: '200px 1fr',
             gap: '0',

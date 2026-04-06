@@ -106,7 +106,7 @@ const skills = [
 
 export default function About() {
   return (
-    <div className="pixel-grid-bg" style={{ minHeight: '100vh', marginRight: '80px' }}>
+    <div className="pixel-grid-bg" style={{ minHeight: '100vh' }}>
 
       {/* ── Hero / Bio ──────────────────────────────────────────────── */}
       <section style={{ padding: '48px 24px 40px' }}>
