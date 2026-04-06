@@ -3,316 +3,414 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
+const blogPosts = [
+  {
+    id: 'bayesian-poker',
+    title: 'Bayesian Decision Making in Poker',
+    excerpt: 'Exploring how Bayesian probability theory can be applied to poker decision-making through computational simulations.',
+    date: '2024-01-15',
+    readTime: '8 min',
+    category: 'POKER STRATEGY',
+    tags: ['Poker', 'Bayesian', 'Statistics'],
+    featured: true,
+    url: 'https://medium.com/@rishabghosh_96234/bayesian-decision-making-in-poker-a-simulation-based-study-b53744288df4',
+  },
+  {
+    id: 'batman-problem',
+    title: 'The Batman Problem',
+    excerpt: 'An exploration of decision-making frameworks and strategic thinking through the lens of Batman\'s approach to complex problems.',
+    date: '2024-02-20',
+    readTime: '6 min',
+    category: 'STRATEGY',
+    tags: ['Strategy', 'Decision Making', 'Analysis'],
+    featured: false,
+    url: 'https://medium.com/@rishabghosh_96234/the-batman-problem-9b09f5d0efff',
+  },
+  {
+    id: 'ai-saas-tool',
+    title: 'Launching My New AI B2B SaaS Tool',
+    excerpt: 'A deep dive into building and launching an AI-powered B2B SaaS solution — from ideation to market launch.',
+    date: '2024-03-10',
+    readTime: '7 min',
+    category: 'TECHNOLOGY',
+    tags: ['AI', 'SaaS', 'Startup'],
+    featured: false,
+    url: 'https://medium.com/@rishabghosh_96234/launching-my-new-ai-b2b-saas-tool-6ae1916c26fc',
+  },
+];
+
 export default function Blog() {
   const [showPopup, setShowPopup] = useState(false);
   const [email, setEmail] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    // Show popup after 2 seconds
-    const timer = setTimeout(() => {
-      setShowPopup(true);
-    }, 2000);
-
-    return () => clearTimeout(timer);
+    const t = setTimeout(() => setShowPopup(true), 2000);
+    return () => clearTimeout(t);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
+    setSubmitting(true);
     try {
-      const response = await fetch('/api/subscribe', {
+      const res = await fetch('/api/subscribe', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setShowPopup(false);
-        setEmail('');
-        // You could add a success toast here
-        console.log('Successfully subscribed:', email);
-      } else {
-        console.error('Subscription failed:', data.error);
-        // You could add an error toast here
-      }
-    } catch (error) {
-      console.error('Subscription error:', error);
-    } finally {
-      setIsSubmitting(false);
-    }
+      if (res.ok) { setSubmitted(true); setShowPopup(false); setEmail(''); }
+    } catch { /* silent */ }
+    finally { setSubmitting(false); }
   };
 
-  const blogPosts = [
-    {
-      id: "bayesian-poker",
-      title: "Bayesian Decision Making in Poker: A Simulation-Based Study",
-      excerpt: "Exploring how Bayesian probability theory can be applied to poker decision-making through computational simulations. This study examines the effectiveness of Bayesian reasoning in improving poker strategy and decision-making under uncertainty.",
-      date: "2024-01-15",
-      readTime: "8 min read",
-      category: "Poker Strategy",
-      tags: ["Poker", "Bayesian", "Statistics", "Decision Making"],
-      featured: true,
-      externalUrl: "https://medium.com/@rishabghosh_96234/bayesian-decision-making-in-poker-a-simulation-based-study-b53744288df4"
-    },
-    {
-      id: "batman-problem",
-      title: "The Batman Problem",
-      excerpt: "An exploration of decision-making frameworks and strategic thinking through the lens of Batman's approach to complex problems. How do we apply systematic thinking to real-world challenges?",
-      date: "2024-02-20",
-      readTime: "6 min read",
-      category: "Strategy",
-      tags: ["Strategy", "Decision Making", "Problem Solving", "Analysis"],
-      featured: false,
-      externalUrl: "https://medium.com/@rishabghosh_96234/the-batman-problem-9b09f5d0efff"
-    },
-    {
-      id: "ai-saas-tool",
-      title: "Launching My New AI B2B SaaS Tool",
-      excerpt: "A deep dive into building and launching an AI-powered B2B SaaS solution. From ideation to market launch, exploring the challenges and insights gained from building in the AI space.",
-      date: "2024-03-10",
-      readTime: "7 min read",
-      category: "Technology",
-      tags: ["AI", "SaaS", "Startup", "Technology", "B2B"],
-      featured: false,
-      externalUrl: "https://medium.com/@rishabghosh_96234/launching-my-new-ai-b2b-saas-tool-6ae1916c26fc"
-    }
-  ];
-
-  const categories = ["All", "Poker Strategy", "Strategy", "Technology", "Coming Soon"];
+  const featured = blogPosts.find((p) => p.featured)!;
+  const rest = blogPosts.filter((p) => !p.featured);
 
   return (
-    <div className="min-h-screen bg-gradient-mesh">
-      {/* Email Signup Popup */}
+    <div className="pixel-grid-bg" style={{ minHeight: '100vh', marginRight: '80px', padding: '48px 24px 60px' }}>
+
+      {/* ── Subscribe popup ── */}
       {showPopup && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-surface/95 backdrop-blur-md rounded-lg p-8 border border-border/50 max-w-md w-full shadow-xl animate-in slide-in-from-bottom-4 duration-300">
-            <div className="text-center">
-              <h3 className="text-2xl font-space font-bold text-gradient mb-4">
-                Stay Updated!
-              </h3>
-              <p className="text-text/70 font-inter mb-6 leading-relaxed">
-                Hey there! I currently haven&apos;t written anything, and if I have either way you should sign up to get email updates whenever a new blog drops. I&apos;ll take movies, finance, markets, projects and perhaps life updates if that&apos;s what people are into.
-              </p>
-              
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="your.email@example.com"
-                  required
-                  className="w-full px-4 py-3 bg-background border border-border/50 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text placeholder-text/40 font-inter"
-                />
-                <div className="flex gap-3">
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="flex-1 px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white font-space font-semibold rounded-lg hover:scale-105 transition-all duration-200 disabled:opacity-50"
-                  >
-                    {isSubmitting ? 'Signing up...' : 'Sign Up'}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setShowPopup(false)}
-                    className="px-6 py-3 bg-surface/50 border border-border/50 text-text/70 font-inter font-medium rounded-lg hover:border-primary/40 hover:text-primary transition-all duration-200"
-                  >
-                    Maybe Later
-                  </button>
-                </div>
-              </form>
-            </div>
+        <div style={{
+          position: 'fixed', inset: 0,
+          backgroundColor: 'rgba(22,22,29,0.85)',
+          zIndex: 200,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          padding: '24px',
+        }}>
+          <div style={{
+            backgroundColor: 'var(--px-panel)',
+            border: '3px solid var(--px-green)',
+            boxShadow: '6px 6px 0px var(--px-dark)',
+            padding: '36px 32px',
+            maxWidth: '440px', width: '100%',
+            position: 'relative',
+          }}>
+            {/* Close X */}
+            <button
+              onClick={() => setShowPopup(false)}
+              style={{
+                position: 'absolute', top: '10px', right: '14px',
+                fontFamily: '"Press Start 2P", monospace',
+                fontSize: '10px',
+                color: 'var(--px-border-light)',
+                background: 'none', border: 'none', cursor: 'pointer',
+              }}
+            >✕</button>
+
+            <div style={{
+              fontFamily: '"Press Start 2P", monospace',
+              fontSize: '8px',
+              color: 'var(--px-green)',
+              marginBottom: '8px',
+              letterSpacing: '2px',
+            }}>// NEW TRANSMISSION</div>
+            <h3 style={{
+              fontFamily: '"Press Start 2P", monospace',
+              fontSize: '12px',
+              color: 'var(--px-white)',
+              marginBottom: '16px',
+              lineHeight: 1.7,
+            }}>STAY UPDATED</h3>
+            <p style={{
+              fontFamily: 'VT323, monospace',
+              fontSize: '20px',
+              color: 'var(--px-border-light)',
+              marginBottom: '24px',
+              lineHeight: 1.45,
+            }}>
+              Sign up to get email updates whenever a new post drops — movies, finance, markets, and probably life updates if that&apos;s what people are into.
+            </p>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="your.email@example.com"
+                required
+                style={{ width: '100%', marginBottom: '12px', boxSizing: 'border-box' }}
+              />
+              <div style={{ display: 'flex', gap: '10px' }}>
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  style={{
+                    flex: 1,
+                    backgroundColor: 'var(--px-green)',
+                    border: '3px solid var(--px-border-light)',
+                    boxShadow: '3px 3px 0px var(--px-dark)',
+                    color: 'var(--px-dark)',
+                    fontFamily: '"Press Start 2P", monospace',
+                    fontSize: '9px',
+                    padding: '12px',
+                    cursor: submitting ? 'wait' : 'pointer',
+                    opacity: submitting ? 0.6 : 1,
+                  }}
+                >{submitting ? 'LOADING...' : 'SUBSCRIBE'}</button>
+                <button
+                  type="button"
+                  onClick={() => setShowPopup(false)}
+                  style={{
+                    backgroundColor: 'transparent',
+                    border: '3px solid var(--px-border)',
+                    color: 'var(--px-border-light)',
+                    fontFamily: '"Press Start 2P", monospace',
+                    fontSize: '8px',
+                    padding: '12px 16px',
+                    cursor: 'pointer',
+                  }}
+                >SKIP</button>
+              </div>
+            </form>
           </div>
         </div>
       )}
-      <div className="py-20 px-4 sm:px-6 lg:px-8 mr-20">
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-16 content-slide-in">
-            <h1 className="text-5xl sm:text-6xl font-space font-bold text-highlight mb-6">
-              BLOG
-            </h1>
-            <p className="text-xl font-inter text-text/60 max-w-3xl mx-auto leading-relaxed">
-              I have opinions and I&apos;m not afraid to share them.
-            </p>
+
+      <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+
+        {/* Header */}
+        <div style={{ marginBottom: '44px' }}>
+          <div style={{
+            fontFamily: '"Press Start 2P", monospace',
+            fontSize: '8px',
+            color: 'var(--px-border-light)',
+            letterSpacing: '3px',
+            marginBottom: '14px',
+          }}>// DISPATCH TERMINAL</div>
+          <h1 style={{
+            fontFamily: '"Press Start 2P", monospace',
+            fontSize: 'clamp(16px, 3vw, 24px)',
+            color: 'var(--px-white)',
+            textShadow: '3px 3px 0px rgba(0,0,0,0.5)',
+            lineHeight: 1.7,
+            marginBottom: '12px',
+          }}>BLOG</h1>
+          <p style={{
+            fontFamily: 'VT323, monospace',
+            fontSize: '21px',
+            color: 'var(--px-border-light)',
+          }}>I have opinions and I&apos;m not afraid to share them.</p>
+        </div>
+
+        {/* Featured post */}
+        <FeaturedPost post={featured} />
+
+        {/* Post grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+          gap: '18px',
+          marginBottom: '52px',
+        }}>
+          {rest.map((post) => <BlogCard key={post.id} post={post} />)}
+        </div>
+
+        {/* Newsletter CTA */}
+        <div style={{
+          backgroundColor: 'var(--px-panel)',
+          border: '3px solid var(--px-border-light)',
+          boxShadow: '5px 5px 0px var(--px-dark)',
+          padding: '32px',
+          textAlign: 'center',
+        }}>
+          <h3 style={{
+            fontFamily: '"Press Start 2P", monospace',
+            fontSize: '11px',
+            color: 'var(--px-green)',
+            marginBottom: '12px',
+            lineHeight: 1.7,
+          }}>GET UPDATES</h3>
+          <p style={{
+            fontFamily: 'VT323, monospace',
+            fontSize: '20px',
+            color: 'var(--px-border-light)',
+            marginBottom: '22px',
+          }}>Subscribe to new posts about finance, poker strategy, or whatever else I&apos;m thinking about.</p>
+          <div style={{ display: 'flex', gap: '10px', maxWidth: '440px', margin: '0 auto', flexWrap: 'wrap' }}>
+            <input type="email" placeholder="your.email@example.com" style={{ flex: 1, minWidth: '200px' }} />
+            <button style={{
+              backgroundColor: 'var(--px-green)',
+              border: '3px solid var(--px-border-light)',
+              boxShadow: '3px 3px 0px var(--px-dark)',
+              color: 'var(--px-dark)',
+              fontFamily: '"Press Start 2P", monospace',
+              fontSize: '9px',
+              padding: '12px 18px',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+            }}>SUBSCRIBE</button>
           </div>
-
-          {/* Featured Post */}
-          {blogPosts.filter(post => post.featured).map((post) => (
-            <div key={post.id} className="mb-16 content-slide-up">
-              <div className="bg-surface/50 backdrop-blur-md rounded-lg p-8 border border-border/50 hover:border-primary/40 transition-all duration-300">
-                <div className="flex items-center space-x-4 mb-4">
-                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm font-inter font-medium rounded-full">
-                    Featured
-                  </span>
-                  <span className="text-sm font-inter text-text/60">
-                    {new Date(post.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}
-                  </span>
-                  <span className="text-sm font-inter text-text/60">
-                    {post.readTime}
-                  </span>
-                </div>
-
-                <h2 className="text-3xl font-space font-bold text-primary mb-4">
-                  {post.title}
-                </h2>
-
-                <p className="text-text/70 font-inter text-lg leading-relaxed mb-6">
-                  {post.excerpt}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {post.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 bg-accent/20 text-text/70 text-xs font-inter font-medium rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {post.externalUrl ? (
-                  <a
-                    href={post.externalUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white font-space font-semibold rounded-lg hover:scale-105 transition-all duration-200"
-                  >
-                    Read on Medium
-                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </a>
-                ) : (
-                  <Link
-                    href={`/blog/${post.id}`}
-                    className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white font-space font-semibold rounded-lg hover:scale-105 transition-all duration-200"
-                  >
-                    Read Full Post
-                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
-                )}
-              </div>
-            </div>
-          ))}
-
-          {/* Category Filter */}
-          <div className="mb-12 content-slide-up">
-            <div className="flex flex-wrap gap-3 justify-center">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  className="px-4 py-2 bg-surface/50 backdrop-blur-md border border-border/50 text-text/70 font-inter font-medium rounded-lg hover:border-primary/40 hover:text-primary transition-all duration-200"
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Blog Posts Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.filter(post => !post.featured).map((post, index) => (
-              <article
-                key={post.id}
-                className="bg-surface/50 backdrop-blur-md rounded-lg p-6 border border-border/50 hover:border-primary/40 transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-lg content-slide-up"
-                style={{animationDelay: `${0.1 * index}s`}}
-              >
-                <div className="flex items-center space-x-4 mb-4">
-                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm font-inter font-medium rounded-full">
-                    {post.category}
-                  </span>
-                  <span className="text-sm font-inter text-text/60">
-                    {post.readTime}
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-space font-semibold text-primary mb-3 group-hover:text-gradient transition-all duration-300">
-                  {post.title}
-                </h3>
-
-                <p className="text-text/70 font-inter text-sm leading-relaxed mb-4">
-                  {post.excerpt}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {post.tags.slice(0, 3).map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-1 bg-accent/20 text-text/60 text-xs font-inter font-medium rounded"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-inter text-text/60">
-                    {new Date(post.date).toLocaleDateString('en-US', {
-                      month: 'short',
-                      day: 'numeric',
-                      year: 'numeric'
-                    })}
-                  </span>
-
-                  {post.externalUrl ? (
-                    <a
-                      href={post.externalUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary font-inter font-medium text-sm hover:text-primary/80 transition-colors duration-200"
-                    >
-                      Read on Medium →
-                    </a>
-                  ) : (
-                    <Link
-                      href={`/blog/${post.id}`}
-                      className="text-primary font-inter font-medium text-sm hover:text-primary/80 transition-colors duration-200"
-                    >
-                      Read More →
-                    </Link>
-                  )}
-                </div>
-              </article>
-            ))}
-          </div>
-
-          {/* Newsletter Signup */}
-          <div className="mt-20 text-center">
-            <div className="bg-surface/50 backdrop-blur-md rounded-lg p-8 border border-border/50 max-w-2xl mx-auto content-slide-up">
-              <h3 className="text-2xl font-space font-bold text-gradient mb-4">
-                GET UPDATES
-              </h3>
-              <p className="text-text/70 font-inter mb-6">
-                Subscribe to get notified when I publish new posts about finance,
-                poker strategy, or whatever else I&apos;m thinking about.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <input
-                  type="email"
-                  placeholder="your.email@example.com"
-                  className="flex-1 px-4 py-3 bg-background border border-border/50 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text placeholder-text/40 font-inter"
-                />
-                <button className="px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white font-space font-semibold rounded-lg hover:scale-105 transition-all duration-200">
-                  Subscribe
-                </button>
-              </div>
-            </div>
-          </div>
+          {submitted && (
+            <p style={{
+              fontFamily: '"Press Start 2P", monospace',
+              fontSize: '8px',
+              color: 'var(--px-green)',
+              marginTop: '14px',
+              animation: 'blink 1s steps(1) infinite',
+            }}>✓ TRANSMISSION RECEIVED</p>
+          )}
         </div>
       </div>
     </div>
   );
-} 
+}
+
+/* ── Sub-components ───────────────────────────────────────────────────────── */
+
+function FeaturedPost({ post }: { post: typeof blogPosts[0] }) {
+  const [hov, setHov] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      style={{
+        backgroundColor: 'var(--px-panel)',
+        border: `3px solid ${hov ? 'var(--px-amber)' : 'var(--px-border-light)'}`,
+        boxShadow: hov ? '6px 6px 0px var(--px-dark)' : '4px 4px 0px var(--px-dark)',
+        transform: hov ? 'translate(-2px,-2px)' : 'none',
+        padding: '28px 28px 24px',
+        marginBottom: '28px',
+        position: 'relative',
+        transition: 'none',
+      }}
+    >
+      <div style={{
+        position: 'absolute', top: '-2px', right: '16px',
+        backgroundColor: 'var(--px-amber)',
+        padding: '3px 10px',
+        fontFamily: '"Press Start 2P", monospace',
+        fontSize: '7px',
+        color: 'var(--px-dark)',
+      }}>★ FEATURED</div>
+
+      <div style={{ display: 'flex', gap: '16px', alignItems: 'center', marginBottom: '14px', flexWrap: 'wrap' }}>
+        <span style={{
+          fontFamily: '"Press Start 2P", monospace',
+          fontSize: '7px',
+          backgroundColor: 'rgba(168,204,140,0.1)',
+          border: '2px solid var(--px-green)',
+          color: 'var(--px-green)',
+          padding: '4px 8px',
+        }}>{post.category}</span>
+        <span style={{ fontFamily: 'VT323, monospace', fontSize: '17px', color: 'var(--px-border-light)' }}>
+          {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+        </span>
+        <span style={{ fontFamily: 'VT323, monospace', fontSize: '17px', color: 'var(--px-border-light)' }}>
+          {post.readTime} read
+        </span>
+      </div>
+
+      <h2 style={{
+        fontFamily: '"Press Start 2P", monospace',
+        fontSize: 'clamp(10px, 2vw, 14px)',
+        color: hov ? 'var(--px-amber)' : 'var(--px-white)',
+        lineHeight: 1.8,
+        marginBottom: '14px',
+      }}>{post.title}</h2>
+
+      <p style={{
+        fontFamily: 'VT323, monospace',
+        fontSize: '20px',
+        color: 'var(--px-border-light)',
+        lineHeight: 1.45,
+        marginBottom: '20px',
+      }}>{post.excerpt}</p>
+
+      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '20px' }}>
+        {post.tags.map((tag) => (
+          <span key={tag} style={{
+            backgroundColor: 'var(--px-panel-dark)',
+            border: '2px solid var(--px-border)',
+            color: 'var(--px-blue)',
+            fontFamily: '"Press Start 2P", monospace',
+            fontSize: '6px',
+            padding: '3px 7px',
+          }}>{tag}</span>
+        ))}
+      </div>
+
+      <a
+        href={post.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '8px',
+          backgroundColor: 'var(--px-amber)',
+          border: '3px solid var(--px-border-light)',
+          boxShadow: '3px 3px 0px var(--px-dark)',
+          color: 'var(--px-dark)',
+          fontFamily: '"Press Start 2P", monospace',
+          fontSize: '9px',
+          padding: '11px 18px',
+          textDecoration: 'none',
+        }}
+      >READ ON MEDIUM ↗</a>
+    </div>
+  );
+}
+
+function BlogCard({ post }: { post: typeof blogPosts[0] }) {
+  const [hov, setHov] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      style={{
+        backgroundColor: 'var(--px-panel)',
+        border: `3px solid ${hov ? 'var(--px-green)' : 'var(--px-border)'}`,
+        boxShadow: hov ? '5px 5px 0px var(--px-dark)' : '3px 3px 0px var(--px-dark)',
+        transform: hov ? 'translate(-1px,-1px)' : 'none',
+        padding: '22px',
+        transition: 'none',
+      }}
+    >
+      <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '12px', flexWrap: 'wrap' }}>
+        <span style={{
+          fontFamily: '"Press Start 2P", monospace',
+          fontSize: '6px',
+          backgroundColor: 'rgba(102,136,170,0.1)',
+          border: '2px solid var(--px-blue)',
+          color: 'var(--px-blue)',
+          padding: '3px 7px',
+        }}>{post.category}</span>
+        <span style={{ fontFamily: 'VT323, monospace', fontSize: '16px', color: 'var(--px-border-light)' }}>{post.readTime} read</span>
+      </div>
+
+      <h3 style={{
+        fontFamily: '"Press Start 2P", monospace',
+        fontSize: '9px',
+        color: hov ? 'var(--px-green)' : 'var(--px-white)',
+        lineHeight: 1.8,
+        marginBottom: '12px',
+      }}>{post.title}</h3>
+
+      <p style={{
+        fontFamily: 'VT323, monospace',
+        fontSize: '18px',
+        color: 'var(--px-border-light)',
+        lineHeight: 1.4,
+        marginBottom: '16px',
+      }}>{post.excerpt}</p>
+
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <span style={{ fontFamily: 'VT323, monospace', fontSize: '16px', color: 'var(--px-border)' }}>
+          {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+        </span>
+        <a
+          href={post.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            fontFamily: '"Press Start 2P", monospace',
+            fontSize: '7px',
+            color: 'var(--px-green)',
+            textDecoration: 'none',
+          }}
+        >READ ↗</a>
+      </div>
+    </div>
+  );
+}
