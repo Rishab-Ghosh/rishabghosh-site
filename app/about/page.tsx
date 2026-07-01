@@ -4,6 +4,35 @@ import { useState } from 'react';
 
 const timeline = [
   {
+    period: 'May 2026- Present',
+    title: 'Arbor Ventures - Summer Investment Analyst',
+    desc: 'APAC, MENA, Europe focused Venture firm investing in Seed - Series D, working on cool targets and research that I cant talk about :)',
+    color: 'var(--px-amber)',
+    tag: 'INTERNSHIP',
+    subItems: [],
+  },
+  {
+    period: 'Aug 2025- Present',
+    title: 'HUMAIN LAB - AI Research',
+    desc: 'Evaluating financial context agentic preformance and currently working on new agentic inferencing intiatives.',
+    color: 'var(--px-green)',
+    tag: 'RESEARCH',
+    subItems: [{
+      title: 'HUMAIN LAB',
+      link: 'https://www.humain-lab.ai/',
+      source: 'HUMAIN'
+    }],
+  },
+ {
+    period: 'December 2025- January 2026',
+    title: 'GSMC (Primary Commodities) - Research Analyst',
+    desc: 'Working on rare earth commodities space and conducting institutional research for potential aquisition targets.',
+    color: 'var(--px-amber)',
+    tag: 'INTERNSHIP',
+    subItems: [],
+  },
+
+  {
     period: 'May–Aug 2025',
     title: 'Repsol — Risk & Options Trading',
     desc: 'Built pivot-based frameworks in Python for curve comparison, anomaly detection, and vol spike diagnostics to support risk and trading decisions.',
@@ -30,7 +59,7 @@ const timeline = [
   {
     period: 'Aug 2024–Present',
     title: 'University of Texas at Austin',
-    desc: 'Pursuing a degree in Finance, studying anything and everything in between along the way.',
+    desc: 'Pursuing a degree in Math, Finance, and CS, studying anything and everything in between along the way.',
     color: 'var(--px-blue)',
     tag: 'EDUCATION',
     subItems: [],
@@ -189,7 +218,7 @@ export default function About() {
                   padding: '14px',
                 }}>
                   {[
-                    { label: 'CLASS',  val: 'Finance/CS'  },
+                    { label: 'CLASS',  val: 'Math + Finance + CS'  },
                     { label: 'GUILD',  val: 'McCombs \'28' },
                     { label: 'SERVER', val: 'Austin, TX'  },
                   ].map((row) => (
