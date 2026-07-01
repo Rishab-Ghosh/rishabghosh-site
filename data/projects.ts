@@ -31,8 +31,8 @@ export const projects: Project[] = [
 
 export const comingSoonProjects: ComingSoonProject[] = [
   {
-    title: "Startup Analytics Platform",
-    description: "Comprehensive dashboard for startup metrics and growth analysis",
+    title: "Some kind of trading agent",
+    description: "Had a lot of fun building a trading agent that uses reinforcement learning to optimize trading strategies in simulated markets. Stay tuned for updates on this exciting project!",
     emoji: "🚀"
   },
   {
